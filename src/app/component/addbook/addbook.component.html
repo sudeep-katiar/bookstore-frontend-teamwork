@@ -1,0 +1,91 @@
+<div class="container" fxLayoutAlign="center center">
+  <form [formGroup]="bookForm" (ngSubmit)="(registerForm.valid)" noval>
+    <div class="names">
+      <div>
+        <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+          <mat-icon matPrefix style="margin-right: 20px;">book</mat-icon>
+          <input
+            id="bookName"
+            matInput
+            formControlName="bookName"
+            placeholder="Enter Book Name"
+            autocomplete="off"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+          <mat-icon matPrefix style="margin-right: 20px;">person</mat-icon>
+          <input
+            id="authorName"
+            matInput
+            formControlName="authorName"
+            placeholder="Enter Author Name"
+            autocomplete="off"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="price-qty">
+      <div>
+        <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+          <mat-icon matPrefix style="margin-right: 20px;">rupees</mat-icon>
+          Rs.<input
+            id="price"
+            matInput
+            formControlName="price"
+            placeholder="Enter Book Price"
+            autocomplete="off"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+          <mat-icon matPrefix style="margin-right: 20px;">pets</mat-icon>
+          <input
+            id="quantity"
+            matInput
+            formControlName="quantity"
+            placeholder="Enter Book quantity"
+            autocomplete="off"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="book-details">
+      <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+        <mat-icon matPrefix style="margin-right: 20px;">info</mat-icon>
+        <input
+          id="bookDetails"
+          matInput
+          formControlName="bookDetails"
+          placeholder="Enter Book Book Details"
+          autocomplete="off"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="bookcode">
+      <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+        <mat-icon matPrefix style="margin-right: 20px;">book</mat-icon>
+        <input
+          id="bookCode"
+          matInput
+          formControlName="bookCode"
+          placeholder="Enter Book Code"
+          autocomplete="off"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="submit">
+      <button mat-button type="submit" (click)="onClickaddBook()">
+        Add New Book
+      </button>
+    </div>
+  </form>
+</div>

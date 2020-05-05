@@ -1,0 +1,111 @@
+.example-form {
+  background-color: transparent;
+  width: 500px;
+  border-radius: 15px;
+  box-shadow: 2px 4px 7px 1px;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.form-items {
+  padding: 20px;
+  padding-bottom: 20px;
+  background-color: whitesmoke;
+}
+.example-full-width {
+  width: 100%;
+}
+.medium-list {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  margin: 0px 0px 0px 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  margin-top: 10 px !important ;
+  background-color: mediumslateblue;
+  margin: 20px 10px;
+  width: auto;
+  height: 50px;
+  text-decoration-color: white;
+}
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.list-viewer-wrapper {
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  color: whitesmoke;
+  background-color: white;
+  margin-top: 10px !important;
+}
+.list-header-title {
+  color: rgba(233, 114, 114, 0.54);
+  background: rgba(0, 0, 0, 0.03);
+  padding: 8px 20px;
+  font-weight: bold;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+.threed {
+  color: opacity($color: rgb(25, 25, 29));
+  color: rgba($color: rgb(16, 16, 20), $alpha: 1);
+  margin-top: 10px;
+}
+.mat-form-field {
+  font-size: 20px;
+}
+.fields {
+  display: flex;
+  flex-direction: column;
+}
+.mat-radio-group {
+  font-size: 20px;
+}
+mat-radio-button {
+  padding: 10px;
+}
+.mat-card {
+  width: 550px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+mat-icon {
+  font-family: "Material Icons" !important;
+}
+button:disabled {
+  background: rgb(238, 220, 250);
+}
+.name {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+.psw-cnpsw {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+h2 {
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}

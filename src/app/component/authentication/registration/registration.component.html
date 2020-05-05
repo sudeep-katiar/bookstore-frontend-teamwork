@@ -1,0 +1,293 @@
+<div class="medium-list" fxLayoutAlign="center center">
+  <mat-card style="box-shadow: 1px 1px 1px 2px lightgray; opacity: 0.8;">
+    <mat-card-title
+      class="row threed"
+      style="
+        align-content: center;
+        font-style: unset;
+        font-size: 60vp;
+        background-color: rgb(241, 234, 234);
+        font-variant: normal;
+        text-align: center;
+        text-transform: capitalize;
+        text-decoration-style: wavy;
+      "
+    >
+      <h2>Sign Up</h2>
+    </mat-card-title>
+    <form [formGroup]="registerForm" (ngSubmit)="(registerForm.valid)" noval>
+      <mat-card-content>
+        <ngx-spinner
+          *ngIf="showSpinner"
+          bdColor="rgba(51,51,51,0.8)"
+          size="medium"
+          color="#DDA0DD"
+          type="ball-scale-multiple"
+        >
+          <p style="font-size: 20px; color: white;">Loading...</p>
+        </ngx-spinner>
+        <div class="name" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="fields">
+            <mat-form-field
+              style="margin-bottom: -1.25em;"
+              appearance="outline"
+            >
+              <mat-icon matPrefix style="margin-right: 20px;">person</mat-icon>
+              <input
+                id="firstName"
+                matInput
+                formControlName="firstName"
+                placeholder="Enter First Name"
+                autocomplete="off"
+                required
+              />
+            </mat-form-field>
+
+            <span style="font-size: 15px; margin-bottom: 6px;">
+              <mat-error
+                *ngIf="f.firstName.touched && f.firstName.errors"
+                class="invalid-feedback"
+              >
+                <mat-error *ngIf="f.firstName.errors.required">
+                  FirstName is required</mat-error
+                >
+              </mat-error>
+            </span>
+          </div>
+          <div class="fields">
+            <mat-form-field
+              style="margin-bottom: -1.25em;"
+              appearance="outline"
+            >
+              <mat-icon matPrefix style="margin-right: 20px;">person</mat-icon>
+              <input
+                id="lastname"
+                matInput
+                formControlName="lastName"
+                placeholder="Enter Last Name"
+                autocomplete="off"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="fields" style="width: 100%;">
+          <mat-form-field
+            style="margin-bottom: -1.25em; width: 100%;"
+            appearance="outline"
+          >
+            <mat-icon matPrefix style="margin-right: 20px;">
+              mail_outline</mat-icon
+            >
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              placeholder="Enter email eg. abc@xyz.com"
+              autocomplete="off"
+              required
+            />
+          </mat-form-field>
+          <span style="font-size: 15px; margin-bottom: 6px;">
+            <mat-error
+              *ngIf="f.email.touched && f.email.errors"
+              class="invalid-feedback"
+            >
+              <mat-error *ngIf="f.email.errors.required">
+                Email is required</mat-error
+              >
+              <mat-error *ngIf="f.email.errors.pattern">
+                Please Enter valid Email</mat-error
+              >
+            </mat-error>
+          </span>
+        </div>
+        <div class="fields">
+          <mat-form-field
+            style="margin-bottom: -1.25em; width: 100%;"
+            appearance="outline"
+          >
+            <mat-icon matPrefix style="margin-right: 20px;"
+              >phone_iphone</mat-icon
+            >
+            <input
+              id="phNo"
+              matInput
+              formControlName="phNo"
+              placeholder="Enter your 10 digit Mobile No"
+              autocomplete="off"
+              required
+            />
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+          <span style="font-size: 15px; margin-top: 10px;">
+            <mat-error
+              *ngIf="f.phNo.touched && f.phNo.errors"
+              class="invalid-feedback"
+            >
+              <mat-error *ngIf="f.phNo.errors.required">
+                *phone number is required</mat-error
+              >
+              <mat-error *ngIf="!f.phNo.errors.required && f.phNo.errors">
+                *phone must be 10 digit</mat-error
+              >
+            </mat-error>
+          </span>
+        </div>
+        <div class="fields">
+          <mat-form-field
+            style="margin-bottom: -1.25em; width: 100%;"
+            appearance="outline"
+          >
+            <mat-icon matPrefix style="margin-right: 20px;"
+              >perm_identity</mat-icon
+            >
+            <input
+              id="userName"
+              matInput
+              formControlName="userName"
+              placeholder="Choose User Name Should be Unique"
+              autocomplete="off"
+            />
+          </mat-form-field>
+          <span style="font-size: 15px; margin-top: 10px;">
+            <mat-error
+              *ngIf="f.userName.touched && f.userName.errors"
+              class="invalid-feedback"
+            >
+              <mat-error *ngIf="f.userName.errors.required">
+                UserName is required</mat-error
+              >
+            </mat-error>
+          </span>
+        </div>
+        <div
+          class="psw-cnpsw"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <div>
+            <div class="fields">
+              <mat-form-field
+                style="margin-bottom: -1.25em;"
+                appearance="outline"
+              >
+                <mat-icon matPrefix style="margin-right: 20px;">lock</mat-icon>
+                <input
+                  type="password"
+                  id="password"
+                  matInput
+                  formControlName="password"
+                  placeholder="Enter password"
+                  [type]="hide ? 'password' : 'text'"
+                  autocomplete="off"
+                />
+                <mat-icon matSuffix (click)="hide = !hide">
+                  {{ hide ? "visibility" : "visibility_off" }}
+                </mat-icon>
+              </mat-form-field>
+              <span style="font-size: 15px; margin-bottom: 6px;">
+                <mat-error
+                  *ngIf="f.password.touched && f.password.errors"
+                  class="invalid-feedback"
+                >
+                  <mat-error *ngIf="f.password.errors.required">
+                    You must set Password</mat-error
+                  >
+                  <mat-error
+                    *ngIf="f.password.errors && !f.password.errors.required"
+                  >
+                    Password must be 6 character long</mat-error
+                  >
+                </mat-error>
+              </span>
+            </div>
+          </div>
+          <div>
+            <div class="fields">
+              <mat-form-field
+                style="margin-bottom: -1.25em;"
+                appearance="outline"
+              >
+                <mat-icon matPrefix style="margin-right: 20px;">lock</mat-icon>
+                <input
+                  type="password"
+                  id="cnfpassword"
+                  matInput
+                  formControlName="cnfpassword"
+                  placeholder="confirm password"
+                  [type]="hide2 ? 'password' : 'text'"
+                  autocomplete="off"
+                />
+                <mat-icon matSuffix (click)="hide2 = !hide2">
+                  {{ hide2 ? "visibility" : "visibility_off" }}
+                </mat-icon>
+              </mat-form-field>
+              <span style="font-size: 15px; margin-top: 10px;">
+                <mat-error
+                  *ngIf="f.cnfpassword.touched && f.cnfpassword.errors"
+                  class="invalid-feedback"
+                >
+                  <mat-error *ngIf="f.cnfpassword.errors.required">
+                    Please Re-Enter password</mat-error
+                  >
+                  <mat-error
+                    *ngIf="
+                      !f.cnfpassword.errors.required && f.cnfpassword.errors
+                    "
+                  >
+                    Password Must be same</mat-error
+                  >
+                </mat-error>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="uname" fxLayout="row" fxLayoutAlign="space-between center">
+          <mat-radio-group matInput formControlName="gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="other">Other</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <mat-card-actions class="button-container" align="end">
+          <div>
+            <button
+              style="font-size: 20px; font-weight: bold; color: whitesmoke;"
+              [disabled]="!registerForm.valid"
+              mat-button
+              type="submit"
+              class="divider"
+              (click)="onSellerRegisterSubmit()"
+            >
+              Register As a Seller
+            </button>
+          </div>
+          <div>
+            <button
+              style="font-size: 20px; font-weight: bold; color: whitesmoke;"
+              [disabled]="!registerForm.valid"
+              mat-button
+              type="submit"
+              class="divider"
+              (click)="onRegisterSubmit()"
+            >
+              Register As a User
+            </button>
+          </div>
+        </mat-card-actions>
+        <a
+          href="#"
+          style="
+            align-content: space-around;
+            margin-top: 1px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            font-size: 25px;
+          "
+          >Already Register?</a
+        >
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html {
+  box-sizing: border-box;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: hidden;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  box-sizing: border-box;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: auto;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.mat-paginator-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  font-size: x-large;
+  color: rgb(123, 123, 138);
+}
+.custom-dialog-container-label {
+  mat-dialog-container {
+    padding: 10px;
+  }
+}
+.custom-dialog-container .mat-dialog-container {
+  display: block;
+  padding: 0px;
+  border-radius: 5px 2px 3px 2px;
+  box-sizing: border-box;
+  box-shadow: 1px rgb(218, 233, 230);
+  overflow: hidden;
+  outline: 1px dotted;
+  opacity: 0.9;
+  width: 42em;
+  height: auto;
+  min-height: inherit;
+  max-height: inherit;
+  background-color: lightyellow;
+}

@@ -1,0 +1,46 @@
+<div class="medium-list" style="align-items: center;">
+  <div clas="list-viewer-wrapper">
+    <br /><br /><br /><br />
+    <div class="form-items">
+      <div class="row threed">
+        <h1
+          style="
+            font-style: oblique;
+            text-align: center;
+            text-transform: capitalize;
+            text-decoration-style: wavy;
+          "
+        >
+          Book Store
+        </h1>
+      </div>
+      <ngx-spinner
+        *ngIf="showSpinner"
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple"
+      >
+        <p style="font-size: 20px; color: white;">Loading...</p>
+      </ngx-spinner>
+      <form (ngSubmit)="onActiveSubmit()" class="example-form">
+        <br /><br /><br />
+        <div>
+          <button
+            style="font-size: 20px; font-weight: bold; align-items: center;"
+            mat-button
+            type="submit"
+            class="divider"
+          >
+            Activate Account
+          </button>
+        </div>
+        <br /><br />
+        <p style="text-transform: capitalize; color: crimson;">
+          *Please click on activate button to Verify User and Activate your
+          Account After Activate Account You Can Login
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
