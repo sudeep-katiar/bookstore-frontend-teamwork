@@ -294,7 +294,7 @@
       </div>
 
       <div *ngIf="!cosForm" class="ch-btn">
-        <button (click)="openCustomerDeatilsForm()">Place Order</button>
+        <button style="border-radius: 10px; outline: none;" (click)="openCustomerDeatilsForm()">Place Order</button>
       </div>
       <!-- <div *ngIf="cosForm" class="ch-btn">
         <button
@@ -305,7 +305,7 @@
         </button>
       </div> -->
       <div *ngIf="cosForm" class="ch-btn">
-        <button [disabled]="!customerForm.valid" mat-button matStepperNext>
+        <button style="border-radius: 10px; outline: none;" [disabled]="!customerForm.valid" mat-button matStepperNext>
           Next
         </button>
       </div>
@@ -319,7 +319,7 @@
         <span>Order Summary</span>
       </div>
       <div class="summery-subtitle" fxLayoutAlign="center center">
-        <span>* Pelase take a moment to review your order.</span>
+        <span>* Please take a moment to review your order.</span>
       </div>
       <div class="summery-table">
         <div class="summery-description" fxLayoutAlign="start center">
@@ -352,7 +352,7 @@
         </div>
       </div>
       <div fxLayoutAlign="start center">
-        <button class="cnf-btn" (click)="onclickSubmitCustomer()">
+        <button class="cnf-btn" style="border-radius: 10px; outline: none;" (click)="onclickSubmitCustomer()">
           Confirm Order
         </button>
       </div>
