@@ -120,7 +120,7 @@ export class DisplaybooksComponent implements OnInit {
   }
 
   addToBag(bookId, quantity) {
-    this.toggle = !this.toggle;
+    // this.toggle = !this.toggle;
     this.cartService.addToBag(bookId, 1).subscribe((message) => {
       console.log(message);
       this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {
