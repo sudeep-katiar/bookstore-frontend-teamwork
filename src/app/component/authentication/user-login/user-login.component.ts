@@ -50,9 +50,9 @@ export class UserLoginComponent implements OnInit {
         });
 
         sessionStorage.setItem("token", response.token);
-        sessionStorage.setItem("lastName", response.lastName);
-        sessionStorage.setItem("firstName", response.firstName);
-        this.router.navigate(["dashboard", 1]);
+        localStorage.setItem("lastName", response.lastName);
+        localStorage.setItem("firstName", response.firstName);
+        this.router.navigate(["dashboard/user"]);
         this.showSpinner = false;
       },
       (error: any) => {
@@ -72,9 +72,10 @@ export class UserLoginComponent implements OnInit {
           duration: 5000,
         });
         sessionStorage.setItem("token", response.token);
-        sessionStorage.setItem("lastName", response.lastName);
-        sessionStorage.setItem("firstName", response.firstName);
-        this.router.navigate(["dashboard", 2]);
+        localStorage.setItem("lastName", response.lastName);
+        localStorage.setItem("firstName", response.firstName);
+        localStorage.setItem("isLogin", "true");
+        this.router.navigate(["dashboard/seller"]);
         this.showSpinner = false;
       },
       (error: any) => {
