@@ -96,22 +96,33 @@
               <input id="file-input" type="file" />
             </div>
           </div>
-          <div class="profile-content">
+          <div class="profile-content" *ngIf="isLogin">
             <div>
               <h3 style="color: rgb(65, 64, 64);">{{ name }}</h3>
               <h4 style="color: rgb(71, 82, 94);">{{ uName }}</h4>
             </div>
           </div>
 
-          <div class="div-profile">
+          <div class="div-profile" *ngIf="isLogin">
             <div class="div-signout">
               <button
-                [routerLink]="['']"
                 (click)="onClickClear()"
                 mat-button
                 class="signout-button"
               >
                 Signout
+              </button>
+            </div>
+          </div>
+
+          <div class="div-profile" *ngIf="!isLogin">
+            <div class="div-signout">
+              <button
+                [routerLink]="['/login']"
+                mat-button
+                class="signout-button"
+              >
+                Login
               </button>
             </div>
           </div>

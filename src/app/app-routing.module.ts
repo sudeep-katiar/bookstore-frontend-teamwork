@@ -9,8 +9,9 @@ import { BooksCartComponent } from "./component/books-cart/books-cart.component"
 import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/orderplace-greenting.component";
 
 const routes: Routes = [
+  { path: "", redirectTo: "dashboard/user", pathMatch: "full" },
   { path: "register", component: RegistrationComponent },
-  { path: "", component: UserLoginComponent },
+  { path: "login", component: UserLoginComponent },
   {
     path: "dashboard/:id",
     component: DashboardComponent,
