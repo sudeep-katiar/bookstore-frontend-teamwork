@@ -26,15 +26,16 @@ export class BookService {
   }
   constructor(private http: HttpClient, private httpservice: HttpService) {}
   getBookList(): Observable<any> {
-    return this.httpservice.get(
-      `${environment.bookApiUrl}/${environment.getBooksList}`,
-      { headers: new HttpHeaders().set("token", sessionStorage.token) }
+    return this.httpservice.getWithoutHeader(
+      `${environment.bookApiUrl}/${environment.getBooksList}`
     );
   }
   getSellerBookList(): Observable<any> {
     return this.httpservice.get(
       `${environment.bookApiUrl}/${environment.getSellerBookList}`,
-      { headers: new HttpHeaders().set("token", sessionStorage.token) }
+      {
+        headers: new HttpHeaders().set("token", sessionStorage.token),
+      }
     );
   }
 
