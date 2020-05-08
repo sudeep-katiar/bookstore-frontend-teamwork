@@ -20,11 +20,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     // tslint:disable-next-line:radix
-    this.id = parseInt(this.route.snapshot.paramMap.get("id"));
+    this.id = this.route.snapshot.paramMap.get("id");
     console.log(this.id);
     this.setQueryParam();
     this.bookService.autoRefresh$.subscribe(() => {
-      this.id = parseInt(this.route.snapshot.paramMap.get("id"));
+      this.id = this.route.snapshot.paramMap.get("id");
       console.log(this.id);
       this.setQueryParam();
     });

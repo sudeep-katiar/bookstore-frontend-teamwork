@@ -19,21 +19,21 @@ export class CartServiceService {
   constructor(private http: HttpClient, private httpservice: HttpService) {}
 
   addToBag(id, quantity): Observable<any> {
-    return this.httpservice.post(
-      `${environment.cartApiUrl}/${environment.addToBag}?bookId=${id}&qty=${quantity}`,
-      {},
-      { headers: new HttpHeaders().set("token", sessionStorage.token) }
-    ).pipe(
-      tap(() => {
-        this._autoRefresh$.next();
-      })
-    );
+    return this.httpservice
+      .postWithoutHeader(
+        `${environment.cartApiUrl}/${environment.addToBag}?bookId=${id}&qty=${quantity}`,
+        {}
+      )
+      .pipe(
+        tap(() => {
+          this._autoRefresh$.next();
+        })
+      );
   }
   removeFromeBag(id): Observable<any> {
     return this.httpservice
-      .delete(
-        `${environment.cartApiUrl}/${environment.deleteOrder}?bookId=${id}`,
-        { headers: new HttpHeaders().set("token", sessionStorage.token) }
+      .deleteWithoutToken(
+        `${environment.cartApiUrl}/${environment.deleteOrder}?bookId=${id}`
       )
       .pipe(
         tap(() => {
@@ -43,16 +43,16 @@ export class CartServiceService {
   }
 
   getCartList(): Observable<any> {
-    return this.httpservice.get(
-      `${environment.cartApiUrl}/${environment.cartList}`,
-      { headers: new HttpHeaders().set("token", sessionStorage.token) }
+    return this.httpservice.getWithoutHeader(
+      `${environment.cartApiUrl}/${environment.cartList}`
     );
   }
   updateOrderQuantity(order): Observable<any> {
     return this.httpservice
-      .put(`${environment.cartApiUrl}/${environment.updateQuantity}`, order, {
-        headers: new HttpHeaders().set("token", sessionStorage.token),
-      })
+      .putWithOutToken(
+        `${environment.cartApiUrl}/${environment.updateQuantity}`,
+        order
+      )
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
@@ -62,9 +62,10 @@ export class CartServiceService {
   confirmOrder(order): Observable<any> {
     console.log(order);
     return this.httpservice
-      .put(`${environment.cartApiUrl}/${environment.confirmOrder}`, order, {
-        headers: new HttpHeaders().set("token", sessionStorage.token),
-      })
+      .putWithOutToken(
+        `${environment.cartApiUrl}/${environment.confirmOrder}`,
+        order
+      )
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
