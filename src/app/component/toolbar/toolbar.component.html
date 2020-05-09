@@ -4,14 +4,17 @@
   fullscreen
 >
   <mat-toolbar-row>
-    <!-- <img src="assets\LOGO11.png" class="logo" /> -->
-    <!-- <div fxLayoutAlign="center center">
-      <button><mat-icon>home</mat-icon></button>
-    </div> -->
+    <mat-icon
+      style="font-size: 40px; color: white; cursor: pointer;"
+      [routerLink]="['']"
+      mat-button
+      prefix
+      >home</mat-icon
+    >
     <img src="assets\booklogo_1_45x45.png" class="logo" />
     <span class="title">BookStore</span>
     <div class="search" style="width: 43em;">
-      <mat-card>
+      <mat-card style="height: 0.1rem; margin-top: 20px;">
         <div class="searchicon">
           <mat-icon style="font-size: 30px;" prefix>search</mat-icon>
         </div>
@@ -28,27 +31,6 @@
     </div>
     <div class="cart" *ngIf="isUser">
       <a routerLink="/cart">
-        <!-- <span
-          *ngIf="!isbudget"
-          style="margin-left: 80px; padding-bottom: 80px;"
-          matBadge="{{ totalItem }}"
-        ></span>
-        <span
-          *ngIf="isbudget"
-          style="margin-left: 80px; padding-bottom: 80px;"
-          matBadge="{{ totalItem }}"
-        ></span>
-        <img
-          src="assets\cart-icon-png-26.jpg"
-          style="
-          
-            margin-top: 15px;
-            color: grey;
-            height: 50px;
-            width: 50px;
-            padding-left: 0.5em;
-          "
-      />-->
         <mat-icon
           style="
             margin-top: 20px;
@@ -75,6 +57,7 @@
             width: 50px;
             margin-top: 20px;
             padding-left: 5.5em;
+            cursor: pointer;
           "
       /></a>
 

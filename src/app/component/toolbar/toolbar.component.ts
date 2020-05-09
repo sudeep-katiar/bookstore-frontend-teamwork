@@ -36,7 +36,6 @@ export class ToolbarComponent implements OnInit {
       }
     });
     if (localStorage.isLogin !== undefined && localStorage.isLogin !== null) {
-      console.log("ssssss", this.isLogin);
       this.isLogin = true;
     } else {
       this.isLogin = false;
@@ -60,7 +59,6 @@ export class ToolbarComponent implements OnInit {
   getBudgetTotal() {
     this.cartService.getBudgetTotal().subscribe((data) => {
       this.totalItem = data.total + 1;
-      console.log("sghsghsgshgh" + this.totalItem);
       if (this.totalItem != null) {
         console.log("if condion");
         this.isbudget = true;
