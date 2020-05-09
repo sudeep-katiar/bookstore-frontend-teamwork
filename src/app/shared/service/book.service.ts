@@ -34,7 +34,7 @@ export class BookService {
     return this.httpservice.get(
       `${environment.bookApiUrl}/${environment.getSellerBookList}`,
       {
-        headers: new HttpHeaders().set("token", sessionStorage.token),
+        headers: new HttpHeaders().set("token", localStorage.token),
       }
     );
   }
@@ -42,7 +42,7 @@ export class BookService {
   addBook(book: Book): Observable<any> {
     return this.httpservice
       .post(`${environment.bookApiUrl}/${environment.addbook}`, book, {
-        headers: new HttpHeaders().set("token", sessionStorage.token),
+        headers: new HttpHeaders().set("token", localStorage.token),
       })
       .pipe(
         tap(() => {
@@ -57,7 +57,7 @@ export class BookService {
         `${environment.bookApiUrl}/${environment.addBookImage}?bookId=${bookId}`,
         formData,
         {
-          headers: new HttpHeaders().set("token", sessionStorage.token),
+          headers: new HttpHeaders().set("token", localStorage.token),
           reportProgress: true,
           observe: "events",
         }
@@ -92,7 +92,7 @@ export class BookService {
     return this.httpservice
       .delete(
         `${environment.bookApiUrl}/${environment.deleteBook}?bookId=${bookId}`,
-        { headers: new HttpHeaders().set("token", sessionStorage.token) }
+        { headers: new HttpHeaders().set("token", localStorage.token) }
       )
       .pipe(
         tap(() => {

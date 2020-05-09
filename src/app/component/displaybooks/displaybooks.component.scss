@@ -8,6 +8,14 @@
   margin-right: 10%;
   justify-content: space-between;
 }
+.bottom {
+  background-color: rgba(131, 4, 4, 0.829);
+  padding: 10px;
+  text-align: center;
+  color: white;
+  bottom: 0px;
+  width: 100%;
+}
 .main-container {
   height: 100%;
   width: 100%;
@@ -119,10 +127,12 @@ mat-card-title {
   height: 35px;
   width: auto;
   border: none;
+  cursor: pointer;
 }
 .wishlist {
   height: 35px;
   margin-left: 10px;
   width: auto;
   background-color: white;
+  cursor: pointer;
 }
