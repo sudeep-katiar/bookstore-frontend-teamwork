@@ -83,10 +83,9 @@ export class CartServiceService {
   confirmOrder(order): Observable<any> {
     console.log(order);
     return this.httpservice
-      .putWithOutToken(
-        `${environment.cartApiUrl}/${environment.confirmOrder}`,
-        order
-      )
+      .put(`${environment.cartApiUrl}/${environment.confirmOrder}`, order, {
+        headers: new HttpHeaders().set("token", localStorage.token),
+      })
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
