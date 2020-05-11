@@ -81,30 +81,48 @@
   </mat-toolbar-row>
 </mat-toolbar> -->
 
-
-
 <!-- <div class="top-nav-container" fxLayout="column" xLayoutAlign="space-between center" fxFlex="100"> -->
-<mat-toolbar style="background-color: rgba(131, 4, 4, 0.829);" fxLayout="row" xLayoutAlign="space-between center"
-  fullscreen>
+<mat-toolbar
+  style="background-color: rgba(131, 4, 4, 0.829);"
+  fxLayout="row"
+  xLayoutAlign="space-between center"
+  fullscreen
+>
   <!-- home -->
   <div class="home" fxFlex="10" fxLayoutGap="5%">
     <button mat-icon-button matTooltip="home" [routerLink]="['']">
-      <mat-icon>home</mat-icon>
+      <mat-icon style="transform: scale(1.6);">home</mat-icon>
     </button>
   </div>
   <!-- logo  name -->
   <div class="logo-name" fxFlex="15">
     <div class="image" style="display: flex; justify-content: flex-start;">
-      <img src=".\assets\education.png" alt="open book">
-      <span class="mat-title" fxHide.xs="true">&nbsp;Bookstore</span>
+      <img src=".\assets\education.png" style="height: 35px;" alt="open book" />
+      <span class="mat-title" fxHide.xs="true"
+        >&nbsp;&nbsp;&nbsp;Bookstore</span
+      >
     </div>
   </div>
 
   <!-- search -->
-  <div class="search" fxFlex="50" fxLayout="row" fxLayout-align="center center" fxFlex.sm="70">
-    <input type="text" class="input" placeholder="Search" [(ngModel)]="bookName" (input)="bookSearch()" />
+  <div
+    class="search"
+    fxFlex="50"
+    fxLayout="row"
+    fxLayout-align="center center"
+    fxFlex.sm="70"
+  >
+    <input
+      type="text"
+      class="input"
+      placeholder="Search"
+      [(ngModel)]="bookName"
+      (input)="bookSearch()"
+    />
     <button mat-icon-button fxHide.xs="true">
-      <mat-icon style="color: rgba(131, 4, 4, 0.829); transform: scale(1.25);">search</mat-icon>
+      <mat-icon style="color: rgba(131, 4, 4, 0.829); transform: scale(1.25);"
+        >search</mat-icon
+      >
     </button>
   </div>
   <!-- refresh -->
@@ -114,50 +132,80 @@
     </button>
   </div>
   <!-- Shooping cart -->
-  <div class="cart" *ngIf="isUser" fxFlex="15" align=center>
+  <div class="cart" *ngIf="isUser" fxFlex="15" align="center">
     <button mat-icon-button routerLink="/cart" matTooltip="Cart">
-      <mat-icon matBadge="{{ totalItem }}" matBadgeSize="small">add_shopping_cart</mat-icon>
-      <span style="color: #fff;">&nbsp;&nbsp;Cart</span>
+      <mat-icon matBadge="{{ totalItem }}" matBadgeSize="small"
+        >add_shopping_cart</mat-icon
+      >
+      <span style="color: #fff;">&nbsp;&nbsp;&nbsp;Cart</span>
     </button>
   </div>
   <!-- to give 1 space for mobile -->
   &nbsp;
   <!-- Profile -->
-  <div class="profile" fxFlex="10" align=center>
+  <div class="profile" fxFlex="10" align="center">
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <!-- <img [matMenuTriggerFor]="vertebrates" src="assets\account_circle-24px.svg" width="80%" style="color: #fff;" /> -->
-      <mat-icon style="transform: scale(1.25);">account_circle</mat-icon>
+      <mat-icon style="transform: scale(1.5);">account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
-        <mat-card style="overflow: hidden">
-
-          <div>
-            <img class="topic-avatar" mat-card-avatar src="assets\profilePic.jpg" />
-            <label class="btn-upload">
+      <div
+        fxLayout="row"
+        fxFlex="100"
+        style="width: 11em;"
+        fxLayoutAlign="center center"
+      >
+        <mat-card
+          style="
+            overflow: hidden;
+            background-color: rgba(131, 4, 4, 0.86);
+            height: 10em;
+          "
+        >
+          <div style="margin-left: 15px;">
+            <img
+              style="height: 60px; width: 60px; padding: 0px; margin: 0px;"
+              class="topic-avatar"
+              mat-card-avatar
+              src="assets\profilePic.jpg"
+            />
+            <!-- <label class="btn-upload">
               <input type="file" name="fileupload" />
               <button class="btn">Change</button>
-            </label>
+            </label> -->
           </div>
-          <div>
-            <h3 style="color: rgb(65, 64, 64);">{{ name }}</h3>
-            <h4 style="color: rgb(71, 82, 94);">{{ uName }}</h4>
+          <div style="width: 100%;" *ngIf="isLogin">
+            <h4 style="color: whitesmoke;">{{ name }}</h4>
+            <h4 style="color: whitesmoke;">{{ uName }}</h4>
           </div>
           <div class="div-profile" *ngIf="isLogin">
             <div class="div-signout">
-              <button (click)="onClickClear()" mat-button class="signout-button">
+              <button
+                style="background-color: whitesmoke;"
+                (click)="onClickClear()"
+                mat-button
+                [routerLink]="['']"
+                class="signout-button"
+              >
                 Signout
               </button>
             </div>
           </div>
           <div class="div-profile" *ngIf="!isLogin">
-            <div class="div-signout">
-              <button [routerLink]="['/login']" mat-button class="signout-button">
+            <div
+              class="div-signout"
+              style="margin-top: 60px; margin-left: 5px;"
+            >
+              <button
+                [routerLink]="['/login']"
+                mat-button
+                class="signout-button"
+                style="background-color: whitesmoke;"
+              >
                 Login
               </button>
             </div>
           </div>
-
         </mat-card>
       </div>
     </mat-menu>
