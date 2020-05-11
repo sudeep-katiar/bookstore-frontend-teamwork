@@ -6,4 +6,5 @@ export class Costomer {
   city: string;
   landMark: string;
   address: string;
+  type: string;
 }

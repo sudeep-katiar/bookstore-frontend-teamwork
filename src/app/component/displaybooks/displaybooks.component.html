@@ -2,8 +2,13 @@
   <div class="container">
     <div class="title">
       Books
-      <span style="font-size: 15px; color: rgb(139, 136, 136);"
-        >({{ size }} items)</span
+      <span
+        style="
+          font-size: 15px;
+          font-family: Lato, Regular;
+          color: rgb(139, 136, 136);
+        "
+        >({{ size }} &nbsp;Items)</span
       >
     </div>
     <div class="sort-choice">
@@ -14,13 +19,19 @@
             [(value)]="selectedOption"
             (selectionChange)="onclicksort()"
           >
-            <mat-option value="none">
+            <mat-option style="font-family: Lato, Regular;" value="none">
               sort by relevance
             </mat-option>
-            <mat-option value="Price:High To Low">
+            <mat-option
+              style="font-family: Lato, Regular;"
+              value="Price:High To Low"
+            >
               Price:High To Low
             </mat-option>
-            <mat-option value="Price:Low To High">
+            <mat-option
+              style="font-family: Lato, Regular;"
+              value="Price:Low To High"
+            >
               Price:Low To High
             </mat-option>
             <mat-option value="By Book Name">
@@ -47,13 +58,16 @@
         let book of books
           | bookSearch: bookSearch
           | sortbyprice: sortbyprice
-          | paginate: { itemsPerPage: 10, currentPage: page, id: 'first' }
+          | paginate: { itemsPerPage: 12, currentPage: page, id: 'first' }
       "
       fxLayout="{{ view }}"
       [fxLayoutAlign]="center"
-      fxFlexOffset="4"
+      fxFlexOffset="3"
     >
-      <mat-card style="height: 24em;" matTooltip="{{ book.bookDetails }}">
+      <mat-card
+        style="height: 21.5em; width: 233px;"
+        matTooltip="{{ book.bookDetails }}"
+      >
         <mat-card-title
           *ngIf="isSeller"
           (click)="openImageDialog(book.bookId)"
@@ -61,8 +75,8 @@
           ><img
             src="{{ book.bookImage }}"
             style="
-              height: 150px;
-              width: 120px;
+              height: 135px;
+              width: 105px;
               margin-left: 55px;
               margin-right: 55px;
               padding-top: 20px;
@@ -95,7 +109,11 @@
           >
             Out Of stock
           </div>
-          <div class="availablity" style="color: blue;" *ngIf="book.quantity">
+          <div
+            class="availablity"
+            style="color: rgb(2, 110, 2);"
+            *ngIf="book.quantity"
+          >
             Available Books: {{ book.quantity }}
           </div>
           <div class="cart-buttons" *ngIf="isUser && book.quantity">
