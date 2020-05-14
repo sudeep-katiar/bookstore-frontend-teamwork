@@ -6,19 +6,7 @@
       background-color: whitesmoke;
     "
   >
-    <mat-card-title
-      class="row threed"
-      style="
-        align-content: center;
-        font-style: unset;
-        font-size: 60vp;
-        background-color: rgb(241, 234, 234);
-        font-variant: normal;
-        text-align: center;
-        text-transform: capitalize;
-        text-decoration-style: wavy;
-      "
-    >
+    <mat-card-title class="rowthreed">
       <h2>Book Store</h2>
     </mat-card-title>
     <form [formGroup]="loginForm" (ngSubmit)="(loginForm.valid)" noval>
@@ -26,7 +14,7 @@
         <mat-card-subtitle
           style="
             font-style: unset;
-            margin-bottom: -1.5em;
+            margin-bottom: -2.5em;
             color: rgb(146, 144, 144);
             text-align: center;
             text-transform: capitalize;
@@ -48,7 +36,7 @@
 
         <mat-form-field
           class="form-container rupesh"
-          style="margin-bottom: -1.25em;"
+          style="margin-bottom: -2.25em;"
         >
           <mat-icon matPrefix matPrefix style="margin-right: 20px;">
             mail_outline</mat-icon
@@ -63,7 +51,7 @@
             required
           />
         </mat-form-field>
-        <span style="font-size: 15px; margin-top: 10px;">
+        <span style="font-size: 15px; margin-top: 10px; margin-left: 23px;">
           <mat-error
             *ngIf="f.email.touched && f.email.errors"
             class="invalid-feedback"

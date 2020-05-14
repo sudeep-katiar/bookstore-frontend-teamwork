@@ -1,87 +1,3 @@
-<!-- <mat-toolbar class="container docs-navbar-header" style="background-color: rgba(131, 4, 4, 0.829); height: 80px;"
-  fullscreen>
-  <mat-toolbar-row>
-    <mat-icon style="font-size: 40px; color: white; cursor: pointer;" [routerLink]="['']" mat-button prefix>home
-    </mat-icon>
-    <img src="assets\booklogo_1_45x45.png" class="logo" />
-    <span class="title">BookStore</span>
-    <div class="search" style="width: 43em;">
-      <mat-card style="height: 0.1rem; margin-top: 20px;">
-        <div class="searchicon">
-          <mat-icon style="font-size: 30px;" prefix>search</mat-icon>
-        </div>
-        <div class="searchboxinput">
-          <input type="text" placeholder="Search" [(ngModel)]="bookName" (input)="bookSearch()"
-            style="height: 40px; width: 800px;" />
-        </div>
-      </mat-card>
-    </div>
-    <div class="cart" *ngIf="isUser">
-      <a routerLink="/cart">
-        <mat-icon style="
-            margin-top: 20px;
-            margin-left: 80px;
-            color: #fff;
-            font-size: 40px;
-            padding-left: 0.5em;
-          " matBadge="{{ totalItem }}" matBadgeSize="small">add_shopping_cart</mat-icon>
-      </a>
-    </div>
-    <div class="last-icon">
-      <a><img [matMenuTriggerFor]="vertebrates" src="assets\account_circle-24px.svg" style="
-            margin-left: 80px;
-            color: grey;
-            height: 50px;
-            width: 50px;
-            margin-top: 20px;
-            padding-left: 5.5em;
-            cursor: pointer;
-          " /></a>
-
-      <div style="width: 10em;">
-        <mat-menu #vertebrates="matMenu" class="menuStyle" style="width: auto;">
-          <div class="div-profilepic">
-            <div class="image-upload">
-              <label for="file-input">
-                <img src="assets\profilePic.jpg" style="
-                    height: 110px;
-                    width: 110px;
-                    padding: 0px;
-                    margin: 0px;
-                  " />
-              </label>
-              <input id="file-input" type="file" />
-            </div>
-          </div>
-          <div class="profile-content" *ngIf="isLogin">
-            <div>
-              <h3 style="color: rgb(65, 64, 64);">{{ name }}</h3>
-              <h4 style="color: rgb(71, 82, 94);">{{ uName }}</h4>
-            </div>
-          </div>
-
-          <div class="div-profile" *ngIf="isLogin">
-            <div class="div-signout">
-              <button (click)="onClickClear()" mat-button class="signout-button">
-                Signout
-              </button>
-            </div>
-          </div>
-
-          <div class="div-profile" *ngIf="!isLogin">
-            <div class="div-signout">
-              <button [routerLink]="['/login']" mat-button class="signout-button">
-                Login
-              </button>
-            </div>
-          </div>
-        </mat-menu>
-      </div>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar> -->
-
-<!-- <div class="top-nav-container" fxLayout="column" xLayoutAlign="space-between center" fxFlex="100"> -->
 <mat-toolbar
   style="background-color: rgba(131, 4, 4, 0.829);"
   fxLayout="row"
@@ -146,37 +62,32 @@
   <div class="profile" fxFlex="10" align="center">
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <!-- <img [matMenuTriggerFor]="vertebrates" src="assets\account_circle-24px.svg" width="80%" style="color: #fff;" /> -->
-      <mat-icon style="transform: scale(1.5);">account_circle</mat-icon>
+      <mat-icon style="transform: scale(1.7);">account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <div
         fxLayout="row"
         fxFlex="100"
-        style="width: 11em;"
+        style="
+          width: 11em;
+          background-color: darkgray;
+          position: initial;
+          z-index: 3100;
+        "
         fxLayoutAlign="center center"
       >
-        <mat-card
-          style="
-            overflow: hidden;
-            background-color: rgba(131, 4, 4, 0.86);
-            height: 10em;
-          "
-        >
-          <div style="margin-left: 15px;">
+        <mat-card style="overflow: hidden; height: 10em;">
+          <div style="margin-left: 6px;">
             <img
               style="height: 60px; width: 60px; padding: 0px; margin: 0px;"
               class="topic-avatar"
               mat-card-avatar
               src="assets\profilePic.jpg"
             />
-            <!-- <label class="btn-upload">
-              <input type="file" name="fileupload" />
-              <button class="btn">Change</button>
-            </label> -->
           </div>
           <div style="width: 100%;" *ngIf="isLogin">
-            <h4 style="color: whitesmoke;">{{ name }}</h4>
-            <h4 style="color: whitesmoke;">{{ uName }}</h4>
+            <h4>{{ name }}</h4>
+            <h4>{{ uName }}</h4>
           </div>
           <div class="div-profile" *ngIf="isLogin">
             <div class="div-signout">

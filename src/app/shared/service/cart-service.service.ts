@@ -22,7 +22,7 @@ export class CartServiceService {
     if (localStorage.isLogin == undefined && localStorage.isLogin == null) {
       return this.httpservice
         .postWithoutHeader(
-          `${environment.cartApiUrl}/${environment.addToBag}?bookId=${id}&qty=${quantity}&userId=${sessionStorage.userId}`,
+          `${environment.cartApiUrl}/${environment.addToBag}/${id}?qty=${quantity}&userId=${sessionStorage.userId}`,
           {}
         )
         .pipe(
@@ -33,7 +33,7 @@ export class CartServiceService {
     } else {
       return this.httpservice
         .post(
-          `${environment.cartApiUrl}/${environment.addToCartWithUser}?bookId=${id}&qty=${quantity}`,
+          `${environment.cartApiUrl}/${environment.addToCartWithUser}/${id}?qty=${quantity}`,
           {},
           { headers: new HttpHeaders().set("token", localStorage.token) }
         )

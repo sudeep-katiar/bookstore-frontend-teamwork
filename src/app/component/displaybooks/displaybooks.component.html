@@ -13,28 +13,36 @@
     </div>
     <div class="sort-choice">
       <form>
-        <mat-form-field appearance="outline">
-          <mat-label>sort by relevance</mat-label>
+        <mat-form-field style="width: 10em;" appearance="outline">
+          <mat-label style="font-family: Lato, Regular; font-size: 15px;"
+            >sort by relevance</mat-label
+          >
           <mat-select
             [(value)]="selectedOption"
             (selectionChange)="onclicksort()"
           >
-            <mat-option style="font-family: Lato, Regular;" value="none">
+            <mat-option
+              style="font-family: Lato, Regular; font-size: 15px;"
+              value="none"
+            >
               sort by relevance
             </mat-option>
             <mat-option
-              style="font-family: Lato, Regular;"
+              style="font-family: Lato, Regular; font-size: 15px;"
               value="Price:High To Low"
             >
               Price:High To Low
             </mat-option>
             <mat-option
-              style="font-family: Lato, Regular;"
+              style="font-family: Lato, Regular; font-size: 15px;"
               value="Price:Low To High"
             >
               Price:Low To High
             </mat-option>
-            <mat-option value="By Book Name">
+            <mat-option
+              style="font-family: Lato, Regular; font-size: 15px;"
+              value="By Book Name"
+            >
               By Book Name
             </mat-option>
           </mat-select>
@@ -58,7 +66,7 @@
         let book of books
           | bookSearch: bookSearch
           | sortbyprice: sortbyprice
-          | paginate: { itemsPerPage: 12, currentPage: page, id: 'first' }
+          | paginate: { itemsPerPage: 10, currentPage: page, id: 'first' }
       "
       fxLayout="{{ view }}"
       [fxLayoutAlign]="center"
@@ -137,6 +145,7 @@
               </button>
             </div>
           </div>
+
           <div class="cart-buttons" *ngIf="isSeller">
             <div>
               <button
@@ -168,8 +177,5 @@
         id="first"
       ></pagination-controls>
     </div>
-  </div>
-  <div class="bottom">
-    Copyright &copy; 2020, Bookstore #DI Team. All rights reserved
   </div>
 </div>
