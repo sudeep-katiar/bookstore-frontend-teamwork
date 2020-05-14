@@ -90,10 +90,9 @@ export class BookService {
 
   deleteBook(bookId): Observable<any> {
     return this.httpservice
-      .delete(
-        `${environment.bookApiUrl}/${environment.deleteBook}?bookId=${bookId}`,
-        { headers: new HttpHeaders().set("token", localStorage.token) }
-      )
+      .delete(`${environment.bookApiUrl}/${bookId}`, {
+        headers: new HttpHeaders().set("token", localStorage.token),
+      })
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
