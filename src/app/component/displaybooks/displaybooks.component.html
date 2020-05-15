@@ -32,7 +32,13 @@
     </div>
   </div>
   <div class="addbook" *ngIf="isSeller">
-    <button class="btn-addbook" (click)="openDialog()">ADD BOOK</button>
+    <button
+      class="btn-addbook"
+      style="border-radius: 10px; outline: none;"
+      (click)="openDialog()"
+    >
+      ADD BOOK
+    </button>
   </div>
   <div class="list-books">
     <div
@@ -47,7 +53,7 @@
       [fxLayoutAlign]="center"
       fxFlexOffset="4"
     >
-      <mat-card matTooltip="{{ book.bookDetails }}">
+      <mat-card style="height: 24em;" matTooltip="{{ book.bookDetails }}">
         <mat-card-title
           *ngIf="isSeller"
           (click)="openImageDialog(book.bookId)"
@@ -78,13 +84,13 @@
           />
         </mat-card-title>
 
-        <mat-card-content
+        <mat-card-content style="width: 17em;"
           ><div class="bookname">{{ book.bookName }}</div>
           <div class="authorname">by {{ book.authorName }}</div>
           <div class="price">Rs. {{ book.price }}</div>
           <div
             class="availablity"
-            style="font-size: large;"
+            style="font-size: large; color: red;"
             *ngIf="!book.quantity"
           >
             Out Of stock
@@ -95,24 +101,41 @@
           <div class="cart-buttons" *ngIf="isUser && book.quantity">
             <div>
               <button
-                [style.background-color]="toggle ? 'green' : 'red'"
+                style="outline: none; border-radius: 5px;"
                 class="addtobag"
                 (click)="addToBag(book.bookId, book.quantity)"
+                #clickState
               >
                 ADD TO BAG
               </button>
             </div>
-            <div><button class="wishlist">WISHLIST</button></div>
+            <div>
+              <button
+                style="outline: none; border-radius: 5px;"
+                [style.background-color]="toggle ? 'white' : 'red'"
+                class="wishlist"
+              >
+                WISHLIST
+              </button>
+            </div>
           </div>
           <div class="cart-buttons" *ngIf="isSeller">
             <div>
-              <button class="addtobag" (click)="deleteBook(book.bookId)">
-                DELETE BOOK
+              <button
+                style="outline: none; border-radius: 5px;"
+                class="addtobag"
+                (click)="deleteBook(book.bookId)"
+              >
+                DELETE
               </button>
             </div>
             <div>
-              <button class="wishlist" (click)="openDialog2()">
-                UPDATE BOOK
+              <button
+                style="outline: none; border-radius: 5px;"
+                class="wishlist"
+                (click)="openDialog2()"
+              >
+                UPDATE
               </button>
             </div>
           </div>
@@ -127,5 +150,8 @@
         id="first"
       ></pagination-controls>
     </div>
+  </div>
+  <div class="bottom">
+    Copyright &copy; 2020, Bookstore #DI Team. All rights reserved
   </div>
 </div>

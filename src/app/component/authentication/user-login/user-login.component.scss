@@ -14,19 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background-image: url(~src\assets\log-reg-back.jpg);
-  // background: #9796f0; /* fallback for old browsers */
-  // background: -webkit-linear-gradient(
-  //   to right,
-  //   #f80743,
-  //   #9796f0
-  // );
-  //   background: linear-gradient(
-  //   to right,
-  //   #f706e3,
-  //   #9796f0
-  // );
+  background-color: rgba(193, 154, 107, 0.3);
 }
 
 .social-login {
@@ -60,7 +48,7 @@
 
 .divider {
   margin-top: 10 px !important ;
-  background-color: rgb(4, 4, 247);
+  background-color: rgba(87, 25, 25, 0.904);
   margin: 20px 10px;
   width: auto;
   height: 50px;

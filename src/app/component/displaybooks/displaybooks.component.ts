@@ -38,11 +38,11 @@ export class DisplaybooksComponent implements OnInit {
   ) {
     this.userService.getQueryParam().subscribe((message) => {
       this.id = message.id;
-      if (this.id === 1) {
+      if (this.id === "user") {
         this.isSeller = false;
         this.isUser = true;
         this.getAllBookList();
-      } else if (this.id === 2) {
+      } else if (this.id === "seller") {
         this.isSeller = true;
         this.getSellerBook();
       }
@@ -120,7 +120,7 @@ export class DisplaybooksComponent implements OnInit {
   }
 
   addToBag(bookId, quantity) {
-    this.toggle = !this.toggle;
+    // this.toggle = !this.toggle;
     this.cartService.addToBag(bookId, 1).subscribe((message) => {
       console.log(message);
       this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {

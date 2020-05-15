@@ -100,6 +100,7 @@ import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/o
     MatBadgeModule,
   ],
   entryComponents: [
+    UserLoginComponent,
     AddbookComponent,
     UpdateBookComponent,
     UploadBookimageComponent,

@@ -7,10 +7,12 @@ import {
   MatSnackBar,
   MatTableDataSource,
   MatPaginator,
+  MatDialog,
 } from "@angular/material";
 import { CartServiceService } from "src/app/shared/service/cart-service.service";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { Costomer } from "src/app/shared/model/costomer.model";
+import { UserLoginComponent } from "../authentication/user-login/user-login.component";
 
 @Component({
   selector: "app-books-cart",
@@ -25,12 +27,14 @@ export class BooksCartComponent implements OnInit {
   page = 1;
   cosForm = false;
   quantity = 1;
+  currentpage = "cart";
   customerForm: FormGroup;
   cusomerDetails = new Costomer();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   displayedColumns: string[] = ["bookName", "price", "quantity", "total"];
   constructor(
+    private dialog: MatDialog,
     private matSnackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private cartService: CartServiceService,
@@ -138,7 +142,19 @@ export class BooksCartComponent implements OnInit {
   }
 
   openCustomerDeatilsForm() {
-    this.cosForm = true;
+    let currentPage = "cart";
+    if (localStorage.isLogin == undefined && localStorage.isLogin == null) {
+      this.cosForm = false;
+      const dialogRef = this.dialog.open(UserLoginComponent, {
+        width: "auto",
+        panelClass: "custom-dialog-container",
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log("The dialog was closed");
+      });
+    } else {
+      this.cosForm = true;
+    }
   }
 
   onclickSubmitCustomer() {

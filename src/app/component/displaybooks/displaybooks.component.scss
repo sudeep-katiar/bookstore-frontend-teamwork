@@ -8,6 +8,14 @@
   margin-right: 10%;
   justify-content: space-between;
 }
+.bottom {
+  background-color: rgba(131, 4, 4, 0.829);
+  padding: 10px;
+  text-align: center;
+  color: white;
+  bottom: 0px;
+  width: 100%;
+}
 .main-container {
   height: 100%;
   width: 100%;
@@ -95,7 +103,7 @@ mat-card-title {
   font-size: medium;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
-  color: rgb(184, 5, 5);
+  color: rgba(87, 25, 25, 0.904);
 }
 .cart-buttons {
   display: flex;
@@ -111,18 +119,20 @@ mat-card-title {
   width: 120px;
   margin-left: 10px;
   color: white;
-  background-color: rgba(131, 4, 4, 0.829);
+  background-color: rgba(87, 25, 25, 0.904);
 }
 .addtobag {
   color: white;
-  background-color: rgba(131, 4, 4, 0.829);
+  background-color: rgba(87, 25, 25, 0.904);
   height: 35px;
   width: auto;
   border: none;
+  cursor: pointer;
 }
 .wishlist {
   height: 35px;
   margin-left: 10px;
   width: auto;
   background-color: white;
+  cursor: pointer;
 }

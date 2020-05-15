@@ -175,6 +175,7 @@
               <div fxFlex="45">
                 <mat-form-field appearance="outline">
                   <input
+                    type="number"
                     id="contact"
                     matInput
                     formControlName="contact"
@@ -205,6 +206,7 @@
               <div fxFlex="45">
                 <mat-form-field appearance="outline">
                   <input
+                    type="number"
                     id="pinCode"
                     matInput
                     formControlName="pinCode"
@@ -279,6 +281,32 @@
                 </mat-form-field>
               </div>
             </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <mat-radio-group
+                matInput
+                style="
+                  display: flex;
+                  align-self: center;
+                  justify-content: space-between;
+                "
+              >
+                <mat-radio-button style="margin-right: 20px;" value="male"
+                  >Home</mat-radio-button
+                >
+                <mat-radio-button style="margin-right: 20px;" value="female"
+                  >Work</mat-radio-button
+                >
+                <mat-radio-button style="margin-right: 20px;" value="other"
+                  >Other</mat-radio-button
+                >
+              </mat-radio-group>
+            </div>
           </mat-card-content>
         </form>
       </mat-card>
@@ -294,24 +322,56 @@
       </div>
 
       <div *ngIf="!cosForm" class="ch-btn">
-        <button (click)="openCustomerDeatilsForm()">Place Order</button>
-      </div>
-      <!-- <div *ngIf="cosForm" class="ch-btn">
         <button
-          [disabled]="!customerForm.valid"
-          (click)="onclickSubmitCustomer()"
+          style="border-radius: 10px; outline: none;"
+          (click)="openCustomerDeatilsForm()"
         >
-          Checkout
+          Place Order
         </button>
-      </div> -->
+      </div>
       <div *ngIf="cosForm" class="ch-btn">
-        <button [disabled]="!customerForm.valid" mat-button matStepperNext>
+        <button
+          style="border-radius: 10px; outline: none;"
+          [disabled]="!customerForm.valid"
+          mat-button
+          matStepperNext
+        >
           Next
         </button>
       </div>
     </div>
   </mat-step>
+  <mat-step>
+    <div fxLayoutAlign="center center" fxLayout="column">
+      <ng-template matStepLabel>Payment</ng-template>
 
+      <div
+        style="margin-top: 100px;"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
+        <mat-radio-group matInput>
+          <mat-radio-button value="male">Cash On Delivery</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          margin-top: 400px;
+        "
+      >
+        <button
+          style="border-radius: 10px; outline: none;"
+          mat-button
+          matStepperNext
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </mat-step>
   <mat-step>
     <ng-template matStepLabel>Confirm Order</ng-template>
     <div fxLayoutAlign="center center" fxLayout="column">
@@ -319,7 +379,7 @@
         <span>Order Summary</span>
       </div>
       <div class="summery-subtitle" fxLayoutAlign="center center">
-        <span>* Pelase take a moment to review your order.</span>
+        <span>* Please take a moment to review your order.</span>
       </div>
       <div class="summery-table">
         <div class="summery-description" fxLayoutAlign="start center">
@@ -352,10 +412,17 @@
         </div>
       </div>
       <div fxLayoutAlign="start center">
-        <button class="cnf-btn" (click)="onclickSubmitCustomer()">
+        <button
+          class="cnf-btn"
+          style="border-radius: 10px; outline: none;"
+          (click)="onclickSubmitCustomer()"
+        >
           Confirm Order
         </button>
       </div>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+<div class="bottom">
+  Copyright &copy; 2020, Bookstore #DI Team. All rights reserved
+</div>
