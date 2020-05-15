@@ -22,7 +22,7 @@ export class CartServiceService {
     if (localStorage.isLogin == undefined && localStorage.isLogin == null) {
       return this.httpservice
         .postWithoutHeader(
-          `${environment.cartApiUrl}/${environment.addToBag}?bookId=${id}&qty=${quantity}&userId=${sessionStorage.userId}`,
+          `${environment.cartApiUrl}/${environment.addToBag}/${id}?qty=${quantity}&userId=${sessionStorage.userId}`,
           {}
         )
         .pipe(
@@ -33,7 +33,7 @@ export class CartServiceService {
     } else {
       return this.httpservice
         .post(
-          `${environment.cartApiUrl}/${environment.addToCartWithUser}?bookId=${id}&qty=${quantity}`,
+          `${environment.cartApiUrl}/${environment.addToCartWithUser}/${id}?qty=${quantity}`,
           {},
           { headers: new HttpHeaders().set("token", localStorage.token) }
         )
@@ -83,10 +83,9 @@ export class CartServiceService {
   confirmOrder(order): Observable<any> {
     console.log(order);
     return this.httpservice
-      .putWithOutToken(
-        `${environment.cartApiUrl}/${environment.confirmOrder}`,
-        order
-      )
+      .put(`${environment.cartApiUrl}/${environment.confirmOrder}`, order, {
+        headers: new HttpHeaders().set("token", localStorage.token),
+      })
       .pipe(
         tap(() => {
           this._autoRefresh$.next();

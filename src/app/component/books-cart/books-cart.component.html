@@ -1,5 +1,5 @@
 <app-toolbar></app-toolbar>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
+<mat-horizontal-stepper linear="true" #stepper>
   <mat-step [stepControl]="customerForm">
     <ng-template matStepLabel>Fill Customer Details</ng-template>
     <div class="main-conatiner">
@@ -20,11 +20,11 @@
                 <div>
                   <img
                     src="{{ element.bookImage }}"
-                    style="height: 130px; width: 100px; margin-right: 20px;"
+                    style="height: 60px; width: 60px; margin-right: 20px;"
                   />
                 </div>
 
-                <div style="margin-top: 115px;">{{ element.bookName }}</div>
+                <div style="margin-top: 45px;">{{ element.bookName }}</div>
               </div>
             </td>
           </ng-container>
@@ -57,8 +57,8 @@
                   <div style="height: 20px; width: 20px;">
                     <button
                       style="
-                        height: 30px;
-                        width: 30px;
+                        height: 25px;
+                        width: 25px;
                         background-color: black;
                       "
                       (click)="increaseQuantity(element)"
@@ -78,8 +78,8 @@
                   <div>
                     <button
                       style="
-                        height: 30px;
-                        width: 30px;
+                        height: 25px;
+                        width: 25px;
                         background-color: black;
                       "
                       (click)="decreseQuantity(element)"
@@ -115,7 +115,7 @@
                     matTooltip="Remove From Bag"
                     ><img
                       (click)="removeCartBook(element.bookId)"
-                      style="height: 30px; width: 30px;"
+                      style="height: 30px; width: 30px; margin-bottom: 20px;"
                       src="assets\x-button.png"
                   /></span>
                 </div>
@@ -136,11 +136,15 @@
     </div>
     <div class="form-conatiner">
       <div *ngIf="!cosForm">
-        <mat-card-title>Customer Details</mat-card-title>
+        <mat-card-title style="font-size: 20px;"
+          >Customer Details</mat-card-title
+        >
       </div>
       <mat-card *ngIf="cosForm" fxLayoutAlign="center center" fxLayout="column">
         <div>
-          <mat-card-title>Customer Details</mat-card-title>
+          <mat-card-title style="font-size: 20px;"
+            >Customer Details</mat-card-title
+          >
         </div>
         <form
           *ngIf="cosForm"
@@ -201,7 +205,6 @@
                 </span>
               </div>
             </div>
-
             <div class="name-contact">
               <div fxFlex="45">
                 <mat-form-field appearance="outline">
@@ -295,6 +298,7 @@
                   align-self: center;
                   justify-content: space-between;
                 "
+                formControlName="type"
               >
                 <mat-radio-button style="margin-right: 20px;" value="male"
                   >Home</mat-radio-button
@@ -333,6 +337,7 @@
         <button
           style="border-radius: 10px; outline: none;"
           [disabled]="!customerForm.valid"
+          (click)="addCustomerInfo()"
           mat-button
           matStepperNext
         >
@@ -423,6 +428,6 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
-<div class="bottom">
+<div class="bottom" style="background-color: black;">
   Copyright &copy; 2020, Bookstore #DI Team. All rights reserved
 </div>
