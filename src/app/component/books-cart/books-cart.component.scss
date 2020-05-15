@@ -1,7 +1,6 @@
 table {
   width: 100%;
 }
-
 .main-conatiner {
   border: 1px solid gray;
   margin: 10px;
@@ -27,13 +26,13 @@ mat-paginator-container {
   width: 100%;
 }
 .title {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bolder;
   font-family: Arial, Helvetica, sans-serif;
   align-items: flex-start;
   margin-top: 10px;
   margin-bottom: 30px;
-  color: lightsteelblue;
+  color: rgb(179, 184, 190);
 }
 .mat-table {
   height: auto;
@@ -47,12 +46,12 @@ mat-paginator-container {
   width: 480px;
 }
 .header-block {
-  background-color: rgba(214, 206, 206, 0.829);
+  background-color: rgba(131, 4, 4, 0.829);
   border: none;
   width: 18rem;
   color: white;
-  height: 2rem;
-  font-size: 1.5rem;
+  height: 10px;
+  font-size: 0.8rem;
   margin: 0px;
   padding: 0px;
   font-family: Arial, Helvetica, sans-serif;
@@ -79,7 +78,7 @@ mat-paginator-container {
   margin-right: auto;
   align-items: center;
   align-content: center;
-  padding: 0px 20px 20px 0px;
+  // padding: 0px 20px 20px 0px;
 }
 rows-blocks total {
   display: flex;
