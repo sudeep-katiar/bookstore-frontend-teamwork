@@ -71,4 +71,8 @@ export class UserService {
   getQueryParam(): Observable<any> {
     return this.queryParam.asObservable();
   }
+
+  isLoggedIn() {
+    return !!sessionStorage.token;
+  }
 }

@@ -29,6 +29,7 @@ export class DisplaybooksComponent implements OnInit {
   sortbyprice = "none";
   page: number = 1;
   budgetTotal;
+  value: any;
   constructor(
     private dialog: MatDialog,
     private matSnackBar: MatSnackBar,
@@ -51,7 +52,6 @@ export class DisplaybooksComponent implements OnInit {
       this.getAllBookList();
       this.getSellerBook();
     });
-
     this.setBudgetTotal();
     this.getCartItems();
   }

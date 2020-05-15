@@ -156,14 +156,15 @@ export class BooksCartComponent implements OnInit {
     let currentPage = "cart";
     if (localStorage.isLogin == undefined && localStorage.isLogin == null) {
       this.cosForm = false;
-      const dialogRef = this.dialog.open(UserLoginComponent, {
-        width: "500px",
-        height: "600px",
-        panelClass: "custom-dialog-container",
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        console.log("The dialog was closed");
-      });
+      this.route.navigate(["/login"]);
+      // const dialogRef = this.dialog.open(UserLoginComponent, {
+      //   width: "500px",
+      //   height: "600px",
+      //   panelClass: "custom-dialog-container",
+      // });
+      // dialogRef.afterClosed().subscribe((result) => {
+      //   console.log("The dialog was closed");
+      // });
     } else {
       this.cosForm = true;
     }

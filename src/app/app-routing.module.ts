@@ -7,6 +7,7 @@ import { DisplaybooksComponent } from "./component/displaybooks/displaybooks.com
 import { ActivateUserComponent } from "./component/authentication/activate-user/activate-user.component";
 import { BooksCartComponent } from "./component/books-cart/books-cart.component";
 import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/orderplace-greenting.component";
+import { AuthGuard } from "./component/authentication/auth.guard";
 
 const routes: Routes = [
   { path: "", redirectTo: "dashboard/user", pathMatch: "full" },
@@ -22,7 +23,10 @@ const routes: Routes = [
   },
   { path: "activate/:token", component: ActivateUserComponent },
   { path: "cart", component: BooksCartComponent },
-  { path: "greeting", component: OrderplaceGreentingComponent },
+  {
+    path: "greeting",
+    component: OrderplaceGreentingComponent,
+  },
 ];
 
 @NgModule({
