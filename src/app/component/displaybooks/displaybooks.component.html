@@ -92,8 +92,8 @@
             "
           />
         </mat-card-title>
-        <mat-card-title *ngIf="isUser" matTooltip="Book Image"
-          ><img
+        <mat-card-title *ngIf="isUser" matTooltip="Book Image">
+          <img
             src="{{ book.bookImage }}"
             style="
               height: 150px;
@@ -119,11 +119,20 @@
           </div>
           <div
             class="availablity"
-            style="color: rgb(2, 110, 2);"
-            *ngIf="book.quantity"
+            style="color: rgb(163, 43, 6);"
+            *ngIf="book.quantity < 5 && book.quantity; else elsecondition"
           >
-            Available Books: {{ book.quantity }}
+            Only {{ book.quantity }} left hurry up
           </div>
+          <ng-template #elsecondition>
+            <div
+              class="availablity"
+              style="color: rgb(2, 110, 2);"
+              *ngIf="book.quantity"
+            >
+              Available Books: {{ book.quantity }}
+            </div>
+          </ng-template>
           <div class="cart-buttons" *ngIf="isUser && book.quantity">
             <div>
               <button

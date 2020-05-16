@@ -27,6 +27,7 @@ export class BooksCartComponent implements OnInit {
   size: number;
   page = 1;
   cosForm = false;
+  openSummery = false;
   quantity = 1;
   currentpage = "cart";
   customerForm: FormGroup;
@@ -66,6 +67,7 @@ export class BooksCartComponent implements OnInit {
       locality: [""],
       address: ["", [Validators.required]],
       city: ["", [Validators.required]],
+      country: [""],
       landMark: ["", [Validators.required]],
       type: ["", Validators.required],
     });
@@ -144,6 +146,7 @@ export class BooksCartComponent implements OnInit {
     }
   }
   addCustomerInfo() {
+    this.openSummery = true;
     this.userservice
       .addAddress(this.customerForm.value)
       .subscribe((message) => {
