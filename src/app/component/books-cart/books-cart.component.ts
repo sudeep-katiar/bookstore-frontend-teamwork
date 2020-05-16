@@ -13,6 +13,7 @@ import { CartServiceService } from "src/app/shared/service/cart-service.service"
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { Costomer } from "src/app/shared/model/costomer.model";
 import { UserLoginComponent } from "../authentication/user-login/user-login.component";
+import { UserService } from "src/app/shared/service/user.service";
 
 @Component({
   selector: "app-books-cart",
@@ -26,6 +27,7 @@ export class BooksCartComponent implements OnInit {
   size: number;
   page = 1;
   cosForm = false;
+  openSummery = false;
   quantity = 1;
   currentpage = "cart";
   customerForm: FormGroup;
@@ -38,6 +40,7 @@ export class BooksCartComponent implements OnInit {
     private matSnackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private cartService: CartServiceService,
+    private userservice: UserService,
     private route: Router
   ) {
     this.cartService.autoRefresh$.subscribe(() => {
@@ -64,7 +67,9 @@ export class BooksCartComponent implements OnInit {
       locality: [""],
       address: ["", [Validators.required]],
       city: ["", [Validators.required]],
+      country: [""],
       landMark: ["", [Validators.required]],
+      type: ["", Validators.required],
     });
     this.cartService.autoRefresh$.subscribe(() => {
       this.getOrderList();
@@ -140,18 +145,29 @@ export class BooksCartComponent implements OnInit {
       });
     }
   }
-
+  addCustomerInfo() {
+    this.openSummery = true;
+    this.userservice
+      .addAddress(this.customerForm.value)
+      .subscribe((message) => {
+        this.matSnackBar.open("Address Added Successfully", "OK", {
+          duration: 4000,
+        });
+      });
+  }
   openCustomerDeatilsForm() {
     let currentPage = "cart";
     if (localStorage.isLogin == undefined && localStorage.isLogin == null) {
       this.cosForm = false;
-      const dialogRef = this.dialog.open(UserLoginComponent, {
-        width: "auto",
-        panelClass: "custom-dialog-container",
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        console.log("The dialog was closed");
-      });
+      this.route.navigate(["/login"]);
+      // const dialogRef = this.dialog.open(UserLoginComponent, {
+      //   width: "500px",
+      //   height: "600px",
+      //   panelClass: "custom-dialog-container",
+      // });
+      // dialogRef.afterClosed().subscribe((result) => {
+      //   console.log("The dialog was closed");
+      // });
     } else {
       this.cosForm = true;
     }

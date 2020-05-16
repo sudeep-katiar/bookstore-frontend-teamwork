@@ -50,7 +50,6 @@ export class ToolbarComponent implements OnInit {
     sessionStorage.clear();
     localStorage.clear();
     this.isLogin = false;
-    this.router.navigate(["dashboard/user"]);
   }
   bookSearch() {
     // console.log(this.bookName);
@@ -64,5 +63,8 @@ export class ToolbarComponent implements OnInit {
         this.isbudget = true;
       }
     });
+  }
+  refreshButton() {
+    window.location.reload();
   }
 }
