@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  userApiUrl: "http://localhost:9002/users",
+  userApiUrl: "http://localhost:8092/users",
   registerURL: "",
   userLoginUrl: "login",
   sellerLoginUrl: "seller-login",
@@ -8,7 +8,7 @@ export const environment = {
   activateUser: "activate",
   addAddress: "address",
 
-  bookApiUrl: "http://localhost:9002/books",
+  bookApiUrl: "http://localhost:8091/books",
   getBooksList: "",
   getSellerBookList: "seller",
   addbook: "",
