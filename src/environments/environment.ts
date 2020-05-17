@@ -6,7 +6,7 @@ export const environment = {
   sellerLoginUrl: "seller-login",
   sellerRegister: "seller",
   activateUser: "activate",
-  addAddress: "address/add",
+  addAddress: "address",
 
   bookApiUrl: "http://localhost:8091/books",
   getBooksList: "",
