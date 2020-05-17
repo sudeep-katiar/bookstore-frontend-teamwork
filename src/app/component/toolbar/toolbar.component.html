@@ -6,14 +6,12 @@
 >
   <!-- home -->
   <div class="home" fxFlex="10" fxLayoutGap="5%">
-    <button mat-icon-button matTooltip="home" [routerLink]="['']">
-      <mat-icon style="transform: scale(1.6);">home</mat-icon>
-    </button>
+    
   </div>
   <!-- logo  name -->
   <div class="logo-name" fxFlex="15">
     <div class="image" style="display: flex; justify-content: flex-start;">
-      <img src=".\assets\education.png" style="height: 35px;" alt="open book" />
+      <img src=".\assets\education.png" style="height: 35px;" alt="open book"  [routerLink]="['']"/>
       <span class="mat-title" fxHide.xs="true"
         >&nbsp;&nbsp;&nbsp;Bookstore</span
       >
