@@ -18,6 +18,16 @@ import { UploadBookimageComponent } from "../addbook/upload-bookimage/upload-boo
   styleUrls: ["./displaybooks.component.scss"],
 })
 export class DisplaybooksComponent implements OnInit {
+  // overriden properties of ngx paginatore
+  public responsive: boolean = true;
+  public autoHide: boolean = false;
+  public maxSize: number = 7;
+  public directionLinks: boolean = true;
+  public labels: any = {
+    previousLabel: " < ",
+    nextLabel: " > ",
+  };
+
   books: any;
   size: number;
   id: any;

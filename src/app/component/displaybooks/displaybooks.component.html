@@ -121,9 +121,9 @@
       </mat-card>
     </div>
   </div>
-  <div>
-    <div class="paginator">
-      <pagination-controls (pageChange)="page = $event" id="first"></pagination-controls>
-    </div>
+  <div class="paginator" align=center>
+    <pagination-controls (pageChange)="page = $event" id="first" [responsive]="responsive" [autoHide]="autoHide"
+      [maxSize]="maxSize" [directionLinks]="directionLinks" [previousLabel]="labels.previousLabel"
+      [nextLabel]="labels.nextLabel"></pagination-controls>
   </div>
 </div>
