@@ -13,8 +13,11 @@
     </div>
     <div class="sort-choice">
       <form>
-        <mat-form-field style="width: 10em;" appearance="outline">
-          <mat-label style="font-family: Lato, Regular; font-size: 15px;"
+        <mat-form-field
+          style="width: 12em; margin-top: 10px;"
+          appearance="outline"
+        >
+          <mat-label style="font-family: Lato, Regular; font-size: 12px;"
             >sort by relevance</mat-label
           >
           <mat-select
@@ -133,7 +136,10 @@
               Available Books: {{ book.quantity }}
             </div>
           </ng-template>
-          <div class="cart-buttons" *ngIf="isUser && book.quantity">
+          <div
+            class="cart-buttons"
+            *ngIf="isUser && book.quantity && value[book.bookId] != book.bookId"
+          >
             <div>
               <button
                 style="outline: none; border-radius: 5px;"
@@ -155,6 +161,28 @@
             </div>
           </div>
 
+          <!--Added to bag-->
+
+          <div
+            class="addedbtn"
+            *ngIf="isUser && book.quantity && value[book.bookId] == book.bookId"
+          >
+            <button
+              style="
+                height: 29px;
+                width: 191px;
+                background-color: #0f151b;
+                border-radius: 2px;
+                color: whitesmoke;
+                text-align: center;
+              "
+              mat-button
+            >
+              ADDED TO BAG
+            </button>
+          </div>
+
+          <!--seller butons-->
           <div class="cart-buttons" *ngIf="isSeller">
             <div>
               <button

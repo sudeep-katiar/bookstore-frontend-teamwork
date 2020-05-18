@@ -96,6 +96,7 @@ export class BooksCartComponent implements OnInit {
   }
   removeCartBook(bookId) {
     this.cartService.removeFromeBag(bookId).subscribe((message) => {
+      sessionStorage.removeItem(bookId);
       this.matSnackBar.open("Book Removed From Cart", "OK", {
         duration: 4000,
       });

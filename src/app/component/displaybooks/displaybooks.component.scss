@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .paginator {
   display: flex;
   width: 100%;
@@ -134,4 +135,9 @@ mat-card-title {
   width: auto;
   background-color: white;
   cursor: pointer;
+}
+.addedbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

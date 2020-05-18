@@ -46,9 +46,7 @@ export class CartServiceService {
   }
   removeFromeBag(id): Observable<any> {
     return this.httpservice
-      .deleteWithoutToken(
-        `${environment.cartApiUrl}/${environment.deleteOrder}?bookId=${id}`
-      )
+      .deleteWithoutToken(`${environment.cartApiUrl}/${id}`)
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
