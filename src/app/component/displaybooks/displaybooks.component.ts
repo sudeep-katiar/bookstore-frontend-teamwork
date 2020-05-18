@@ -18,6 +18,16 @@ import { UploadBookimageComponent } from "../addbook/upload-bookimage/upload-boo
   styleUrls: ["./displaybooks.component.scss"],
 })
 export class DisplaybooksComponent implements OnInit {
+  // overriden properties of ngx paginatore
+  public responsive: boolean = true;
+  public autoHide: boolean = false;
+  public maxSize: number = 7;
+  public directionLinks: boolean = true;
+  public labels: any = {
+    previousLabel: " < ",
+    nextLabel: " > ",
+  };
+
   books: any;
   size: number;
   id: any;
@@ -29,6 +39,7 @@ export class DisplaybooksComponent implements OnInit {
   sortbyprice = "none";
   page: number = 1;
   budgetTotal;
+  value: any;
   constructor(
     private dialog: MatDialog,
     private matSnackBar: MatSnackBar,
@@ -38,11 +49,11 @@ export class DisplaybooksComponent implements OnInit {
   ) {
     this.userService.getQueryParam().subscribe((message) => {
       this.id = message.id;
-      if (this.id === 1) {
+      if (this.id === "user") {
         this.isSeller = false;
         this.isUser = true;
         this.getAllBookList();
-      } else if (this.id === 2) {
+      } else if (this.id === "seller") {
         this.isSeller = true;
         this.getSellerBook();
       }
@@ -51,7 +62,6 @@ export class DisplaybooksComponent implements OnInit {
       this.getAllBookList();
       this.getSellerBook();
     });
-
     this.setBudgetTotal();
     this.getCartItems();
   }
@@ -120,7 +130,7 @@ export class DisplaybooksComponent implements OnInit {
   }
 
   addToBag(bookId, quantity) {
-    this.toggle = !this.toggle;
+    // this.toggle = !this.toggle;
     this.cartService.addToBag(bookId, 1).subscribe((message) => {
       console.log(message);
       this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {
