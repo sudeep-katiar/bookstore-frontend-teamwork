@@ -16,7 +16,19 @@ export class DashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private bookService: BookService
-  ) {}
+  ) {
+    if (
+      localStorage.isLogin === undefined &&
+      localStorage.isLogin == null &&
+      sessionStorage.userId === undefined &&
+      sessionStorage.userId == null
+    ) {
+      sessionStorage.setItem(
+        "userId",
+        Math.floor(Math.random() * (8888 - 1111) + 1111).toString()
+      );
+    }
+  }
 
   ngOnInit() {
     // tslint:disable-next-line:radix

@@ -19,22 +19,34 @@ export class CartServiceService {
   constructor(private http: HttpClient, private httpservice: HttpService) {}
 
   addToBag(id, quantity): Observable<any> {
-    return this.httpservice
-      .postWithoutHeader(
-        `${environment.cartApiUrl}/${environment.addToBag}?bookId=${id}&qty=${quantity}`,
-        {}
-      )
-      .pipe(
-        tap(() => {
-          this._autoRefresh$.next();
-        })
-      );
+    if (localStorage.isLogin == undefined && localStorage.isLogin == null) {
+      return this.httpservice
+        .postWithoutHeader(
+          `${environment.cartApiUrl}/${environment.addToBag}/${id}?qty=${quantity}&userId=${sessionStorage.userId}`,
+          {}
+        )
+        .pipe(
+          tap(() => {
+            this._autoRefresh$.next();
+          })
+        );
+    } else {
+      return this.httpservice
+        .post(
+          `${environment.cartApiUrl}/${environment.addToCartWithUser}/${id}?qty=${quantity}`,
+          {},
+          { headers: new HttpHeaders().set("token", localStorage.token) }
+        )
+        .pipe(
+          tap(() => {
+            this._autoRefresh$.next();
+          })
+        );
+    }
   }
   removeFromeBag(id): Observable<any> {
     return this.httpservice
-      .deleteWithoutToken(
-        `${environment.cartApiUrl}/${environment.deleteOrder}?bookId=${id}`
-      )
+      .deleteWithoutToken(`${environment.cartApiUrl}/${id}`)
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
@@ -43,9 +55,16 @@ export class CartServiceService {
   }
 
   getCartList(): Observable<any> {
-    return this.httpservice.getWithoutHeader(
-      `${environment.cartApiUrl}/${environment.cartList}`
-    );
+    if (localStorage.isLogin === undefined && localStorage.isLogin == null) {
+      return this.httpservice.getWithoutHeader(
+        `${environment.cartApiUrl}/${environment.cartList}?userId=${sessionStorage.userId}`
+      );
+    } else {
+      return this.httpservice.get(
+        `${environment.cartApiUrl}/${environment.userCartList}`,
+        { headers: new HttpHeaders().set("token", localStorage.token) }
+      );
+    }
   }
   updateOrderQuantity(order): Observable<any> {
     return this.httpservice
@@ -62,16 +81,43 @@ export class CartServiceService {
   confirmOrder(order): Observable<any> {
     console.log(order);
     return this.httpservice
-      .putWithOutToken(
-        `${environment.cartApiUrl}/${environment.confirmOrder}`,
-        order
-      )
+      .put(`${environment.cartApiUrl}/${environment.confirmOrder}`, order, {
+        headers: new HttpHeaders().set("token", localStorage.token),
+      })
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
         })
       );
   }
+
+  addToWishlist(id): Observable<any> {
+    if (localStorage.isLogin == undefined && localStorage.isLogin == null) {
+      return this.httpservice
+        .postWithoutHeader(
+          `${environment.wishlistApiUrl}/${environment.addToWishlist}${id}?&userId=${sessionStorage.userId}`,
+          {}
+        )
+        .pipe(
+          tap(() => {
+            this._autoRefresh$.next();
+          })
+        );
+    } else {
+      return this.httpservice
+        .post(
+          `${environment.wishlistApiUrl}/${environment.addToWishlistWithUser}/${id}`,
+          {},
+          { headers: new HttpHeaders().set("token", localStorage.token) }
+        )
+        .pipe(
+          tap(() => {
+            this._autoRefresh$.next();
+          })
+        );
+    }
+  }
+
   setCustomerDetails(message: any) {
     this.customerDetails.next({ customer: message });
   }
