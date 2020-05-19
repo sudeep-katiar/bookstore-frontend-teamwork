@@ -8,6 +8,7 @@
   left: 0;
   margin: auto;
 }
+
 .rowthreed {
   align-content: center;
   font-style: unset;
@@ -26,7 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(193, 154, 107, 0.3);
+  background-color: whitesmoke;
 }
 
 .mat-form-field {
@@ -107,4 +108,20 @@ mat-card {
 a {
   color: black;
   text-decoration: none;
+}
+
+input.input:focus {
+  outline-width: 0;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+.input {
+  width: 100%;
+  background-color: #fff;
+  border: none;
+  border-color: #fff;
+  font-size: 16px;
 }
