@@ -109,17 +109,20 @@
           />
         </mat-card-title>
 
-        <mat-card-content style="width: 17em;"
-          ><div class="bookname">{{ book.bookName }}</div>
+        <mat-card-content style="width: 17em;">
+          <div class="out-of-stock" *ngIf="!book.quantity">
+            Out Of stock
+          </div>
+          <div class="bookname">{{ book.bookName }}</div>
           <div class="authorname">by {{ book.authorName }}</div>
           <div class="price">Rs. {{ book.price }}</div>
-          <div
+          <!-- <div
             class="availablity"
             style="font-size: large; color: red;"
             *ngIf="!book.quantity"
           >
             Out Of stock
-          </div>
+          </div> -->
           <div
             class="availablity"
             style="color: rgb(163, 43, 6);"
@@ -135,6 +138,7 @@
             >
               Available Books: {{ book.quantity }}
             </div>
+            <div style="height: 26px;" *ngIf="!book.quantity && isSeller"></div>
           </ng-template>
           <div
             class="cart-buttons"
@@ -142,19 +146,21 @@
           >
             <div>
               <button
-                style="outline: none; border-radius: 5px;"
                 class="addtobag"
                 (click)="addToBag(book.bookId, book.quantity)"
                 #clickState
+                mat-button
               >
                 ADD TO BAG
               </button>
             </div>
             <div>
               <button
-                style="outline: none; border-radius: 5px;"
+                style="border: 1px solid #9d9d9d; outline: none;"
                 [style.background-color]="toggle ? 'white' : 'red'"
                 class="wishlist"
+                mat-button
+                (click)="addToWishlist(book.bookId)"
               >
                 WISHLIST
               </button>
@@ -169,9 +175,9 @@
           >
             <button
               style="
-                height: 29px;
+                height: 32px;
                 width: 191px;
-                background-color: #0f151b;
+                background-color: #3371b5;
                 border-radius: 2px;
                 color: whitesmoke;
                 text-align: center;
@@ -182,22 +188,47 @@
             </button>
           </div>
 
+          <div class="addedbtn" *ngIf="isUser && !book.quantity">
+            <button
+              style="
+                height: 34px;
+                width: 191px;
+                border-radius: 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                border: 1px solid #9d9d9d;
+              "
+              mat-button
+              (click)="addToWishlist(book.bookId)"
+            >
+              WISHLIST
+            </button>
+          </div>
+
           <!--seller butons-->
           <div class="cart-buttons" *ngIf="isSeller">
             <div>
               <button
-                style="outline: none; border-radius: 5px;"
+                style="outline: none; border-radius: 0px;"
                 class="addtobag"
                 (click)="deleteBook(book.bookId)"
+                mat-button
               >
                 DELETE
               </button>
             </div>
             <div>
               <button
-                style="outline: none; border-radius: 5px;"
-                class="wishlist"
+                style="
+                  outline: none;
+                  border-radius: 0px;
+                  border: 1px solid #9d9d9d;
+                "
+                class="update"
                 (click)="openDialog2()"
+                mat-button
               >
                 UPDATE
               </button>
@@ -208,10 +239,16 @@
     </div>
   </div>
   <div>
-    <div class="paginator">
+    <div class="paginator" align="center">
       <pagination-controls
         (pageChange)="page = $event"
         id="first"
+        [responsive]="responsive"
+        [autoHide]="autoHide"
+        [maxSize]="maxSize"
+        [directionLinks]="directionLinks"
+        [previousLabel]="labels.previousLabel"
+        [nextLabel]="labels.nextLabel"
       ></pagination-controls>
     </div>
   </div>

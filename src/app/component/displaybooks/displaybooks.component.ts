@@ -18,6 +18,16 @@ import { UploadBookimageComponent } from "../addbook/upload-bookimage/upload-boo
   styleUrls: ["./displaybooks.component.scss"],
 })
 export class DisplaybooksComponent implements OnInit {
+  // overriden properties of ngx paginatore
+  public responsive: boolean = true;
+  public autoHide: boolean = false;
+  public maxSize: number = 7;
+  public directionLinks: boolean = true;
+  public labels: any = {
+    previousLabel: " < ",
+    nextLabel: " > ",
+  };
+
   books: any;
   size: number;
   id: any;
@@ -148,6 +158,15 @@ export class DisplaybooksComponent implements OnInit {
     }
     this.sortbyprice = this.selectedOption;
     console.log(this.sortbyprice);
+  }
+  addToWishlist(bookId) {
+    // this.toggle = !this.toggle;
+    this.cartService.addToWishlist(bookId).subscribe((message) => {
+      console.log(message);
+      this.matSnackBar.open("Added to Wishlist", "OK", {
+        duration: 4000,
+      });
+    });
   }
 
   getCartItems() {
