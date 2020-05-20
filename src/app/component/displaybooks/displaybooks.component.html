@@ -2,20 +2,17 @@
   <div class="container">
     <div class="title">
       Books
-      <span style="
+      <span
+        style="
           font-size: 15px;
           font-family: Lato, Regular;
           color: rgb(139, 136, 136);
-        ">({{ size }} &nbsp;Items)</span>
+        "
+        >({{ size }} &nbsp;Items)</span
+      >
     </div>
     <div class="sort-choice">
       <form>
-<<<<<<< HEAD
-        <mat-form-field style="width: 10em;" appearance="outline">
-          <mat-label style="font-family: Lato, Regular; font-size: 15px;">sort by relevance</mat-label>
-          <mat-select [(value)]="selectedOption" (selectionChange)="onclicksort()">
-            <mat-option style="font-family: Lato, Regular; font-size: 15px;" value="none">
-=======
         <mat-form-field
           style="width: 12em; margin-top: 10px;"
           appearance="outline"
@@ -31,16 +28,24 @@
               style="font-family: Lato, Regular; font-size: 15px;"
               value="none"
             >
->>>>>>> c54ecfc708e08179083f710280e602559ea977e5
               sort by relevance
             </mat-option>
-            <mat-option style="font-family: Lato, Regular; font-size: 15px;" value="Price:High To Low">
+            <mat-option
+              style="font-family: Lato, Regular; font-size: 15px;"
+              value="Price:High To Low"
+            >
               Price:High To Low
             </mat-option>
-            <mat-option style="font-family: Lato, Regular; font-size: 15px;" value="Price:Low To High">
+            <mat-option
+              style="font-family: Lato, Regular; font-size: 15px;"
+              value="Price:Low To High"
+            >
               Price:Low To High
             </mat-option>
-            <mat-option style="font-family: Lato, Regular; font-size: 15px;" value="By Book Name">
+            <mat-option
+              style="font-family: Lato, Regular; font-size: 15px;"
+              value="By Book Name"
+            >
               By Book Name
             </mat-option>
           </mat-select>
@@ -49,50 +54,61 @@
     </div>
   </div>
   <div class="addbook" *ngIf="isSeller">
-    <button class="btn-addbook" style="border-radius: 10px; outline: none;" (click)="openDialog()">
+    <button
+      class="btn-addbook"
+      style="border-radius: 10px; outline: none;"
+      (click)="openDialog()"
+    >
       ADD BOOK
     </button>
   </div>
   <div class="list-books">
-    <div class="getAllNotes" *ngFor="
+    <div
+      class="getAllNotes"
+      *ngFor="
         let book of books
           | bookSearch: bookSearch
           | sortbyprice: sortbyprice
           | paginate: { itemsPerPage: 10, currentPage: page, id: 'first' }
-      " fxLayout="{{ view }}" [fxLayoutAlign]="center" fxFlexOffset="3">
-      <mat-card style="height: 21.5em; width: 233px;" matTooltip="{{ book.bookDetails }}">
-        <mat-card-title *ngIf="isSeller" (click)="openImageDialog(book.bookId)" matTooltip="Update Image"><img
-            src="{{ book.bookImage }}" style="
+      "
+      fxLayout="{{ view }}"
+      [fxLayoutAlign]="center"
+      fxFlexOffset="3"
+    >
+      <mat-card
+        style="height: 21.5em; width: 233px;"
+        matTooltip="{{ book.bookDetails }}"
+      >
+        <mat-card-title
+          *ngIf="isSeller"
+          (click)="openImageDialog(book.bookId)"
+          matTooltip="Update Image"
+          ><img
+            src="{{ book.bookImage }}"
+            style="
               height: 135px;
               width: 105px;
               margin-left: 55px;
               margin-right: 55px;
               padding-top: 20px;
               padding-bottom: 20px;
-            " />
+            "
+          />
         </mat-card-title>
         <mat-card-title *ngIf="isUser" matTooltip="Book Image">
-          <img src="{{ book.bookImage }}" style="
+          <img
+            src="{{ book.bookImage }}"
+            style="
               height: 150px;
               width: 120px;
               margin-left: 55px;
               margin-right: 55px;
               padding-top: 20px;
               padding-bottom: 20px;
-            " />
+            "
+          />
         </mat-card-title>
-        <mat-card-content style="width: 17em;">
-          <!-- out of stock chnages made by Durgasankar Mishra -->
-          <div class="out-of-stock" *ngIf="!book.quantity">
-            Out Of stock
-          </div>
 
-<<<<<<< HEAD
-          <div class="bookname">{{ book.bookName }}</div>
-          <div class="authorname">by {{ book.authorName }}</div>
-          <div class="price">Rs. {{ book.price }}</div>
-          <!-- old out of stock -->
-=======
         <mat-card-content style="width: 17em;">
           <div class="out-of-stock" *ngIf="!book.quantity">
             Out Of stock
@@ -100,7 +116,6 @@
           <div class="bookname">{{ book.bookName }}</div>
           <div class="authorname">by {{ book.authorName }}</div>
           <div class="price">Rs. {{ book.price }}</div>
->>>>>>> c54ecfc708e08179083f710280e602559ea977e5
           <!-- <div
             class="availablity"
             style="font-size: large; color: red;"
@@ -108,21 +123,19 @@
           >
             Out Of stock
           </div> -->
-<<<<<<< HEAD
-
-          <div class="availablity" style="color: rgb(163, 43, 6);"
-            *ngIf="book.quantity < 5 && book.quantity; else elsecondition">
-=======
           <div
             class="availablity"
             style="color: rgb(163, 43, 6);"
             *ngIf="book.quantity < 5 && book.quantity; else elsecondition"
           >
->>>>>>> c54ecfc708e08179083f710280e602559ea977e5
             Only {{ book.quantity }} left hurry up
           </div>
           <ng-template #elsecondition>
-            <div class="availablity" style="color: rgb(2, 110, 2);" *ngIf="book.quantity">
+            <div
+              class="availablity"
+              style="color: rgb(2, 110, 2);"
+              *ngIf="book.quantity"
+            >
               Available Books: {{ book.quantity }}
             </div>
             <div style="height: 26px;" *ngIf="!book.quantity && isSeller"></div>
@@ -132,25 +145,16 @@
             *ngIf="isUser && book.quantity && value[book.bookId] != book.bookId"
           >
             <div>
-<<<<<<< HEAD
-              <button style="outline: none; border-radius: 5px;" class="addtobag"
-                (click)="addToBag(book.bookId, book.quantity)" #clickState>
-=======
               <button
                 class="addtobag"
                 (click)="addToBag(book.bookId, book.quantity)"
                 #clickState
                 mat-button
               >
->>>>>>> c54ecfc708e08179083f710280e602559ea977e5
                 ADD TO BAG
               </button>
             </div>
             <div>
-<<<<<<< HEAD
-              <button style="outline: none; border-radius: 5px;" [style.background-color]="toggle ? 'white' : 'red'"
-                class="wishlist">
-=======
               <button
                 style="border: 1px solid #9d9d9d; outline: none;"
                 [style.background-color]="toggle ? 'white' : 'red'"
@@ -158,7 +162,6 @@
                 mat-button
                 (click)="addToWishlist(book.bookId)"
               >
->>>>>>> c54ecfc708e08179083f710280e602559ea977e5
                 WISHLIST
               </button>
             </div>
@@ -207,23 +210,16 @@
           <!--seller butons-->
           <div class="cart-buttons" *ngIf="isSeller">
             <div>
-<<<<<<< HEAD
-              <button style="outline: none; border-radius: 5px;" class="addtobag" (click)="deleteBook(book.bookId)">
-=======
               <button
                 style="outline: none; border-radius: 0px;"
                 class="addtobag"
                 (click)="deleteBook(book.bookId)"
                 mat-button
               >
->>>>>>> c54ecfc708e08179083f710280e602559ea977e5
                 DELETE
               </button>
             </div>
             <div>
-<<<<<<< HEAD
-              <button style="outline: none; border-radius: 5px;" class="wishlist" (click)="openDialog2()">
-=======
               <button
                 style="
                   outline: none;
@@ -234,7 +230,6 @@
                 (click)="openDialog2()"
                 mat-button
               >
->>>>>>> c54ecfc708e08179083f710280e602559ea977e5
                 UPDATE
               </button>
             </div>
@@ -243,12 +238,6 @@
       </mat-card>
     </div>
   </div>
-<<<<<<< HEAD
-  <div class="paginator" align=center>
-    <pagination-controls (pageChange)="page = $event" id="first" [responsive]="responsive" [autoHide]="autoHide"
-      [maxSize]="maxSize" [directionLinks]="directionLinks" [previousLabel]="labels.previousLabel"
-      [nextLabel]="labels.nextLabel"></pagination-controls>
-=======
   <div>
     <div class="paginator" align="center">
       <pagination-controls
@@ -262,6 +251,5 @@
         [nextLabel]="labels.nextLabel"
       ></pagination-controls>
     </div>
->>>>>>> c54ecfc708e08179083f710280e602559ea977e5
   </div>
 </div>
