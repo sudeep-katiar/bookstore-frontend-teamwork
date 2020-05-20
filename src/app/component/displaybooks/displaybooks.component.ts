@@ -39,7 +39,7 @@ export class DisplaybooksComponent implements OnInit {
   sortbyprice = "none";
   page: number = 1;
   budgetTotal;
-  value: any;
+  value: any = [];
   constructor(
     private dialog: MatDialog,
     private matSnackBar: MatSnackBar,
@@ -64,6 +64,10 @@ export class DisplaybooksComponent implements OnInit {
     });
     this.setBudgetTotal();
     this.getCartItems();
+    for (let i = 0; i < sessionStorage.length; i++) {
+      let key = sessionStorage.key(i);
+      this.value[sessionStorage.getItem(key)] = sessionStorage.getItem(key);
+    }
   }
 
   ngOnInit() {}
@@ -133,6 +137,8 @@ export class DisplaybooksComponent implements OnInit {
     // this.toggle = !this.toggle;
     this.cartService.addToBag(bookId, 1).subscribe((message) => {
       console.log(message);
+      sessionStorage.setItem(bookId, bookId);
+      this.value[bookId] = bookId;
       this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {
         duration: 4000,
       });
@@ -152,6 +158,15 @@ export class DisplaybooksComponent implements OnInit {
     }
     this.sortbyprice = this.selectedOption;
     console.log(this.sortbyprice);
+  }
+  addToWishlist(bookId) {
+    // this.toggle = !this.toggle;
+    this.cartService.addToWishlist(bookId).subscribe((message) => {
+      console.log(message);
+      this.matSnackBar.open("Added to Wishlist", "OK", {
+        duration: 4000,
+      });
+    });
   }
 
   getCartItems() {
