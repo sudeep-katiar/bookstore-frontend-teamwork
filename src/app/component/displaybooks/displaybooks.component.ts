@@ -11,6 +11,7 @@ import { AddbookComponent } from "../addbook/addbook.component";
 import { CartServiceService } from "src/app/shared/service/cart-service.service";
 import { UpdateBookComponent } from "../update-book/update-book.component";
 import { UploadBookimageComponent } from "../addbook/upload-bookimage/upload-bookimage.component";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-displaybooks",
@@ -45,7 +46,8 @@ export class DisplaybooksComponent implements OnInit {
     private matSnackBar: MatSnackBar,
     private bookService: BookService,
     private userService: UserService,
-    private cartService: CartServiceService
+    private cartService: CartServiceService,
+    private titleService: Title
   ) {
     this.userService.getQueryParam().subscribe((message) => {
       this.id = message.id;
@@ -53,9 +55,11 @@ export class DisplaybooksComponent implements OnInit {
         this.isSeller = false;
         this.isUser = true;
         this.getAllBookList();
+        this.setTitle("#User-Home");
       } else if (this.id === "seller") {
         this.isSeller = true;
         this.getSellerBook();
+        this.setTitle("#Seller-Home");
       }
     });
     this.bookService.autoRefresh$.subscribe(() => {
@@ -178,5 +182,8 @@ export class DisplaybooksComponent implements OnInit {
   setBudgetTotal() {
     this.getCartItems();
     this.cartService.setBudgetTotal(this.budgetTotal);
+  }
+  public setTitle(title: string) {
+    this.titleService.setTitle(title);
   }
 }
