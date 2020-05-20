@@ -14,6 +14,7 @@ import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { Costomer } from "src/app/shared/model/costomer.model";
 import { UserLoginComponent } from "../authentication/user-login/user-login.component";
 import { UserService } from "src/app/shared/service/user.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-books-cart",
@@ -42,8 +43,10 @@ export class BooksCartComponent implements OnInit {
     private formBuilder: FormBuilder,
     private cartService: CartServiceService,
     private userservice: UserService,
-    private route: Router
+    private route: Router,
+    private titleService: Title
   ) {
+    this.setTitle("BookStore UserCart");
     this.cartService.autoRefresh$.subscribe(() => {
       this.getOrderList();
       this.orderList.paginator = this.paginator;
@@ -194,5 +197,9 @@ export class BooksCartComponent implements OnInit {
   }
   setBudgetTotal() {
     this.cartService.setBudgetTotal(this.orders.size());
+  }
+
+  public setTitle(title: string) {
+    this.titleService.setTitle(title);
   }
 }
