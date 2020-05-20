@@ -49,6 +49,7 @@ export class UserLoginComponent implements OnInit {
         this.matSnackBar.open("Successfully Loged In Wellcome", "ok", {
           duration: 5000,
         });
+        sessionStorage.clear();
         localStorage.setItem("token", response.token);
         localStorage.setItem("lastName", response.lastName);
         localStorage.setItem("firstName", response.firstName);
