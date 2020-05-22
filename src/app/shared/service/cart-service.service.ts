@@ -121,8 +121,9 @@ export class CartServiceService {
   removeFromWishlist(id): Observable<any> {
     if (localStorage.isLogin == undefined && localStorage.isLogin == null) {
       return this.httpservice
-        .deleteWithoutToken(
-          `${environment.wishlistApiUrl}/${environment.deleteWishlist}${id}?&userId=${sessionStorage.userId}`,
+        .delete(
+          `${environment.wishlistApiUrl}/${environment.deleteWishlist}${id}`,
+          { headers: new HttpHeaders().set("userId", sessionStorage.userId) }
         )
         .pipe(
           tap(() => {
