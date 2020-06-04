@@ -51,6 +51,8 @@ import { SortbypricePipe } from "./pipe/sortbyprice.pipe";
 import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/orderplace-greenting.component";
 import { AuthGuard } from "./component/authentication/auth.guard";
 import { WishlistComponent } from './component/wishlist/wishlist.component';
+import { ForgotpasswordComponent } from './component/authentication/forgotpassword/forgotpassword.component';
+import { ResetPasswordComponent } from './component/authentication/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +71,8 @@ import { WishlistComponent } from './component/wishlist/wishlist.component';
     SortbypricePipe,
     OrderplaceGreentingComponent,
     WishlistComponent,
+    ForgotpasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
