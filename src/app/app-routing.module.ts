@@ -8,10 +8,16 @@ import { ActivateUserComponent } from "./component/authentication/activate-user/
 import { BooksCartComponent } from "./component/books-cart/books-cart.component";
 import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/orderplace-greenting.component";
 import { AuthGuard } from "./component/authentication/auth.guard";
+import { WishlistComponent } from "./component/wishlist/wishlist.component";
+import { ForgotpasswordComponent } from "./component/authentication/forgotpassword/forgotpassword.component";
+import { ResetPasswordComponent } from "./component/authentication/reset-password/reset-password.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "dashboard/user", pathMatch: "full" },
   { path: "register", component: RegistrationComponent },
+  { path: "wishlist", component: WishlistComponent },
+  { path: "forgotpassword", component: ForgotpasswordComponent },
+  { path: "reset-password/:token", component: ResetPasswordComponent },
   { path: "login", component: UserLoginComponent },
   {
     path: "dashboard/:id",

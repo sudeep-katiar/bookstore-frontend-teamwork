@@ -1,7 +1,8 @@
+<app-toolbar></app-toolbar>
 <div class="main-container">
   <div class="container">
     <div class="title">
-      Books
+      Fevourite Books
       <span
         style="
           font-size: 15px;
@@ -11,64 +12,13 @@
         >({{ size }} &nbsp;Items)</span
       >
     </div>
-    <div class="sort-choice">
-      <form>
-        <mat-form-field
-          style="width: 12em; margin-top: 10px;"
-          appearance="outline"
-        >
-          <mat-label style="font-family: Lato, Regular; font-size: 12px;"
-            >sort by relevance</mat-label
-          >
-          <mat-select
-            [(value)]="selectedOption"
-            (selectionChange)="onclicksort()"
-          >
-            <mat-option
-              style="font-family: Lato, Regular; font-size: 15px;"
-              value="none"
-            >
-              sort by relevance
-            </mat-option>
-            <mat-option
-              style="font-family: Lato, Regular; font-size: 15px;"
-              value="Price:High To Low"
-            >
-              Price:High To Low
-            </mat-option>
-            <mat-option
-              style="font-family: Lato, Regular; font-size: 15px;"
-              value="Price:Low To High"
-            >
-              Price:Low To High
-            </mat-option>
-            <mat-option
-              style="font-family: Lato, Regular; font-size: 15px;"
-              value="By Book Name"
-            >
-              By Book Name
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
-    </div>
-  </div>
-  <div class="addbook" *ngIf="isSeller">
-    <button
-      class="btn-addbook"
-      style="border-radius: 10px; outline: none;"
-      (click)="openDialog()"
-    >
-      ADD BOOK
-    </button>
   </div>
   <div class="list-books">
     <div
       class="getAllNotes"
       *ngFor="
-        let book of books
+        let book of wishlist
           | bookSearch: bookSearch
-          | sortbyprice: sortbyprice
           | paginate: { itemsPerPage: 10, currentPage: page, id: 'first' }
       "
       fxLayout="{{ view }}"
@@ -79,23 +29,7 @@
         style="height: 21.5em; width: 233px;"
         matTooltip="{{ book.bookDetails }}"
       >
-        <mat-card-title
-          *ngIf="isSeller"
-          (click)="openImageDialog(book.bookId)"
-          matTooltip="Update Image"
-          ><img
-            src="{{ book.bookImage }}"
-            style="
-              height: 135px;
-              width: 105px;
-              margin-left: 55px;
-              margin-right: 55px;
-              padding-top: 20px;
-              padding-bottom: 20px;
-            "
-          />
-        </mat-card-title>
-        <mat-card-title *ngIf="isUser" matTooltip="Book Image">
+        <mat-card-title matTooltip="Book Image">
           <img
             src="{{ book.bookImage }}"
             style="
@@ -135,7 +69,7 @@
           </ng-template>
           <div
             class="cart-buttons"
-            *ngIf="isUser && book.quantity && value[book.bookId] != book.bookId"
+            *ngIf="book.quantity && value[book.bookId] != book.bookId"
           >
             <div>
               <button
@@ -150,12 +84,11 @@
             <div>
               <button
                 style="border: 1px solid #9d9d9d; outline: none;"
-                [style.background-color]="toggle ? 'white' : 'red'"
                 class="wishlist"
                 mat-button
-                (click)="addToWishlist(book.bookId)"
+                (click)="removeWishlist(book.bookId)"
               >
-                WISHLIST
+                REMOVE
               </button>
             </div>
           </div>
@@ -164,7 +97,7 @@
 
           <div
             class="addedbtn"
-            *ngIf="isUser && book.quantity && value[book.bookId] == book.bookId"
+            *ngIf="book.quantity && value[book.bookId] == book.bookId"
           >
             <button
               style="
@@ -181,7 +114,7 @@
             </button>
           </div>
 
-          <div class="addedbtn" *ngIf="isUser && !book.quantity">
+          <div class="addedbtn" *ngIf="!book.quantity">
             <button
               style="
                 height: 34px;
@@ -194,38 +127,10 @@
                 border: 1px solid #9d9d9d;
               "
               mat-button
-              (click)="addToWishlist(book.bookId)"
+              (click)="removeWishlist(book.bookId)"
             >
-              WISHLIST
+              REMOVE
             </button>
-          </div>
-
-          <!--seller butons-->
-          <div class="cart-buttons" *ngIf="isSeller">
-            <div>
-              <button
-                style="outline: none; border-radius: 0px;"
-                class="addtobag"
-                (click)="deleteBook(book.bookId)"
-                mat-button
-              >
-                DELETE
-              </button>
-            </div>
-            <div>
-              <button
-                style="
-                  outline: none;
-                  border-radius: 0px;
-                  border: 1px solid #9d9d9d;
-                "
-                class="update"
-                (click)="openDialog2()"
-                mat-button
-              >
-                UPDATE
-              </button>
-            </div>
           </div>
         </mat-card-content>
       </mat-card>
@@ -244,5 +149,8 @@
         [nextLabel]="labels.nextLabel"
       ></pagination-controls>
     </div>
+  </div>
+  <div class="bottom" style="height: 3%; position: absolute;">
+    Copyright &copy; 2020, Bookstore #DI Team. All rights reserved
   </div>
 </div>

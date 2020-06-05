@@ -43,6 +43,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCartItems();
     this.getBudgetTotal();
   }
 
@@ -50,17 +51,29 @@ export class ToolbarComponent implements OnInit {
     sessionStorage.clear();
     localStorage.clear();
     this.isLogin = false;
+    this.router.navigate([""]);
   }
+
   bookSearch() {
     // console.log(this.bookName);
     this.bookService.setSearchBookData(this.bookName);
   }
+
   getBudgetTotal() {
     this.cartService.getBudgetTotal().subscribe((data) => {
       this.totalItem = data.total + 1;
       if (this.totalItem != null) {
         console.log("if condion");
         this.isbudget = true;
+      }
+    });
+  }
+  getCartItems() {
+    console.log("getCartList");
+    this.cartService.getCartList().subscribe((message) => {
+      console.log("sss");
+      if (message.orders.length > 0) {
+        this.totalItem = message.orders.length;
       }
     });
   }

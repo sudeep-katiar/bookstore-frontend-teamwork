@@ -5,6 +5,7 @@ import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { NgxSpinnerService } from "ngx-spinner";
 import { UserService } from "src/app/shared/service/user.service";
 import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-user-login",
@@ -18,13 +19,18 @@ export class UserLoginComponent implements OnInit {
   hide = true;
   userPage = "user";
   page;
+  isError = false;
+  errorMessage;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private userservice: UserService,
     private spinner: NgxSpinnerService,
-    private matSnackBar: MatSnackBar
-  ) {}
+    private matSnackBar: MatSnackBar,
+    private titleService: Title
+  ) {
+    this.setTitle("BookStrore-Login");
+  }
 
   ngOnInit() {
     console.log("ngoninit---------------------------------------");
@@ -49,6 +55,7 @@ export class UserLoginComponent implements OnInit {
         this.matSnackBar.open("Successfully Loged In Wellcome", "ok", {
           duration: 5000,
         });
+        sessionStorage.clear();
         localStorage.setItem("token", response.token);
         localStorage.setItem("lastName", response.lastName);
         localStorage.setItem("firstName", response.firstName);
@@ -58,12 +65,15 @@ export class UserLoginComponent implements OnInit {
       },
       (error: any) => {
         this.showSpinner = false;
+        this.isError = true;
+        this.errorMessage = error.error.error;
         this.matSnackBar.open(error.error.error, "ok", {
           duration: 3000,
         });
       }
     );
   }
+
   onAdminLoginSubmit() {
     this.showSpinner = true;
     console.log("---------------------------------------");
@@ -81,6 +91,8 @@ export class UserLoginComponent implements OnInit {
       },
       (error: any) => {
         this.showSpinner = false;
+        this.isError = true;
+        this.errorMessage = error.error.error;
         this.matSnackBar.open(error.error.error, "ok", {
           duration: 3000,
         });
@@ -90,5 +102,9 @@ export class UserLoginComponent implements OnInit {
 
   get f() {
     return this.loginForm.controls;
+  }
+
+  public setTitle(title: string) {
+    this.titleService.setTitle(title);
   }
 }

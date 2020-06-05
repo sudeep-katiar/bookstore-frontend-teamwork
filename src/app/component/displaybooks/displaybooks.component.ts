@@ -11,6 +11,7 @@ import { AddbookComponent } from "../addbook/addbook.component";
 import { CartServiceService } from "src/app/shared/service/cart-service.service";
 import { UpdateBookComponent } from "../update-book/update-book.component";
 import { UploadBookimageComponent } from "../addbook/upload-bookimage/upload-bookimage.component";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-displaybooks",
@@ -18,6 +19,16 @@ import { UploadBookimageComponent } from "../addbook/upload-bookimage/upload-boo
   styleUrls: ["./displaybooks.component.scss"],
 })
 export class DisplaybooksComponent implements OnInit {
+  // overriden properties of ngx paginatore
+  public responsive: boolean = true;
+  public autoHide: boolean = false;
+  public maxSize: number = 7;
+  public directionLinks: boolean = true;
+  public labels: any = {
+    previousLabel: " < ",
+    nextLabel: " > ",
+  };
+
   books: any;
   size: number;
   id: any;
@@ -29,13 +40,14 @@ export class DisplaybooksComponent implements OnInit {
   sortbyprice = "none";
   page: number = 1;
   budgetTotal;
-  value: any;
+  value: any = [];
   constructor(
     private dialog: MatDialog,
     private matSnackBar: MatSnackBar,
     private bookService: BookService,
     private userService: UserService,
-    private cartService: CartServiceService
+    private cartService: CartServiceService,
+    private titleService: Title
   ) {
     this.userService.getQueryParam().subscribe((message) => {
       this.id = message.id;
@@ -43,9 +55,11 @@ export class DisplaybooksComponent implements OnInit {
         this.isSeller = false;
         this.isUser = true;
         this.getAllBookList();
+        this.setTitle("#User-Home");
       } else if (this.id === "seller") {
         this.isSeller = true;
         this.getSellerBook();
+        this.setTitle("#Seller-Home");
       }
     });
     this.bookService.autoRefresh$.subscribe(() => {
@@ -54,6 +68,14 @@ export class DisplaybooksComponent implements OnInit {
     });
     this.setBudgetTotal();
     this.getCartItems();
+    for (let i = 0; i < sessionStorage.length; i++) {
+      let key = sessionStorage.key(i);
+      this.value[sessionStorage.getItem(key)] = sessionStorage.getItem(key);
+    }
+    this.cartService.autoRefresh$.subscribe(() => {
+      this.getAllBookList();
+      this.getSellerBook();
+    });
   }
 
   ngOnInit() {}
@@ -123,6 +145,8 @@ export class DisplaybooksComponent implements OnInit {
     // this.toggle = !this.toggle;
     this.cartService.addToBag(bookId, 1).subscribe((message) => {
       console.log(message);
+      sessionStorage.setItem(bookId, bookId);
+      this.value[bookId] = bookId;
       this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {
         duration: 4000,
       });
@@ -143,8 +167,18 @@ export class DisplaybooksComponent implements OnInit {
     this.sortbyprice = this.selectedOption;
     console.log(this.sortbyprice);
   }
+  addToWishlist(bookId) {
+    // this.toggle = !this.toggle;
+    this.cartService.addToWishlist(bookId).subscribe((message) => {
+      console.log(message);
+      this.matSnackBar.open(message.message, "OK", {
+        duration: 4000,
+      });
+    });
+  }
 
   getCartItems() {
+    console.log("getCartList");
     this.cartService.getCartList().subscribe((message) => {
       console.log("sss");
       this.budgetTotal = message.orders.length;
@@ -153,5 +187,9 @@ export class DisplaybooksComponent implements OnInit {
   setBudgetTotal() {
     this.getCartItems();
     this.cartService.setBudgetTotal(this.budgetTotal);
+    console.log("set budgetTotal");
+  }
+  public setTitle(title: string) {
+    this.titleService.setTitle(title);
   }
 }
