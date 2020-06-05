@@ -255,10 +255,10 @@
                 "
                 formControlName="type"
               >
-                <mat-radio-button style="margin-right: 20px;" value="male"
+                <mat-radio-button style="margin-right: 20px;" value="Home"
                   >Home</mat-radio-button
                 >
-                <mat-radio-button style="margin-right: 20px;" value="female"
+                <mat-radio-button style="margin-right: 20px;" value="work"
                   >Work</mat-radio-button
                 >
                 <mat-radio-button style="margin-right: 20px;" value="other"
@@ -316,12 +316,7 @@
 
       <!--CheckOut Button-->
       <div class="place-btn">
-        <button
-          mat-button
-          matStepperNext
-          (click)="addCustomerInfo()"
-          class="p-btn"
-        >
+        <button mat-button matStepperNext class="p-btn">
           CHECKOUT
         </button>
       </div>
@@ -359,6 +354,6 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
-<div class="bottom" style="background-color: black;">
+<div class="bottom" style="background-color: black; position: absolute;">
   Copyright &copy; 2020, Bookstore #DI Team. All rights reserved
 </div>
