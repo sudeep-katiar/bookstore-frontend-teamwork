@@ -1,3 +1,4 @@
+import { OrdersComponent } from "./component/orders/orders.component";
 import { NgModule, Component } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { RegistrationComponent } from "./component/authentication/registration/registration.component";
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "register", component: RegistrationComponent },
   { path: "wishlist", component: WishlistComponent },
   { path: "login", component: UserLoginComponent },
+  { path: "orders", component: OrdersComponent },
   {
     path: "dashboard/:id",
     component: DashboardComponent,
