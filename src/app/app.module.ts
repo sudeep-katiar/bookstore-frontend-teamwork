@@ -62,16 +62,11 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { SortbypricePipe } from "./pipe/sortbyprice.pipe";
 import { OrderplaceGreentingComponent } from "./component/orderplace-greenting/orderplace-greenting.component";
 import { AuthGuard } from "./component/authentication/auth.guard";
-<<<<<<< HEAD
 import { WishlistComponent } from "./component/wishlist/wishlist.component";
 import { OrdersComponent } from "./component/orders/orders.component";
 import { RatingModule } from "ngx-rating";
-
-=======
-import { WishlistComponent } from './component/wishlist/wishlist.component';
-import { ForgotpasswordComponent } from './component/authentication/forgotpassword/forgotpassword.component';
-import { ResetPasswordComponent } from './component/authentication/reset-password/reset-password.component';
->>>>>>> b64cf9340cc51db9fb4507eba5669a8754ada700
+import { ForgotpasswordComponent } from "./component/authentication/forgotpassword/forgotpassword.component";
+import { ResetPasswordComponent } from "./component/authentication/reset-password/reset-password.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,12 +85,9 @@ import { ResetPasswordComponent } from './component/authentication/reset-passwor
     SortbypricePipe,
     OrderplaceGreentingComponent,
     WishlistComponent,
-<<<<<<< HEAD
     OrdersComponent,
-=======
     ForgotpasswordComponent,
     ResetPasswordComponent,
->>>>>>> b64cf9340cc51db9fb4507eba5669a8754ada700
   ],
   imports: [
     BrowserModule,
