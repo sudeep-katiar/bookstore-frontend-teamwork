@@ -1,22 +1,24 @@
 <app-toolbar></app-toolbar>
-<div class="container">
-    <!-- <div *ngFor="let order of orders"> -->
-    <div class="cart-book" div fxLayout="row" fxLayoutAlign="space-around none">
-        <div class="book-img">
-            <img src="..\assets\BookImagesAkbar.jpg" height="90px" width="65px" align=center />
-        </div>
-        <div class="book-info" fxLayout="column" fxLayoutAlign="space-evenly stretch">
-            <div>Ramesh Chaurasia kahani</div>
-            <div class="author">Sambit patra</div>
-            <div class="qnt">Quantity : 10</div>
-        </div>
-        <div class="price" fxLayout="column" fxLayoutAlign="space-evenly center"> Rs. 4548</div>
-        <div class="rating" fxLayout="column" fxLayoutAlign="space-evenly center">
-            <rating [(ngModel)]="rating" [max]="5" fullIcon="★" emptyIcon="☆" [float]="true"
-                [titles]="['Very Dissatisfied', 'Dissatisfied', 'Ok', 'Satisfied', 'Extremely Satisfied']"></rating>
+<div *ngFor="let placedOrder of placedOrders">
+    <div class="container">
+        <div class="cart-book" div fxLayout="row" fxLayoutAlign="space-around none">
+            <div class="book-img">
+                <img [src]="placedOrder.bookImage" height="90px" width="65px" align=center />
+            </div>
+            <div class="book-info" fxLayout="column" fxLayoutAlign="space-evenly stretch">
+                <div class="book-name">{{ placedOrder.bookName }}</div>
+                <div class="author">by: {{ placedOrder.authorName }}</div>
+                <div class="quantity">Quantity: {{ placedOrder.quantity }}</div>
+            </div>
+            <div class="price" fxLayout="column" fxLayoutAlign="space-evenly center">
+                {{ placedOrder.price | currency:'INR' }}</div>
+            <div class="rating" fxLayout="column" fxLayoutAlign="space-evenly center">
+                <rating [(ngModel)]="placedOrder.rating" [max]="5" fullIcon="★" emptyIcon="☆" [float]="true"
+                    [titles]="['Very Dissatisfied', 'Dissatisfied', 'Ok', 'Satisfied', 'Extremely Satisfied']"
+                    [readonly]="isRated"></rating>
+            </div>
         </div>
     </div>
-    <!-- </div> -->
 </div>
 
 
