@@ -67,6 +67,7 @@ import { OrdersComponent } from "./component/orders/orders.component";
 import { RatingModule } from "ngx-rating";
 import { ForgotpasswordComponent } from "./component/authentication/forgotpassword/forgotpassword.component";
 import { ResetPasswordComponent } from "./component/authentication/reset-password/reset-password.component";
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +89,7 @@ import { ResetPasswordComponent } from "./component/authentication/reset-passwor
     OrdersComponent,
     ForgotpasswordComponent,
     ResetPasswordComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

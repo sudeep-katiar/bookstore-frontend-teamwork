@@ -12,6 +12,7 @@ import { AuthGuard } from "./component/authentication/auth.guard";
 import { WishlistComponent } from "./component/wishlist/wishlist.component";
 import { ForgotpasswordComponent } from "./component/authentication/forgotpassword/forgotpassword.component";
 import { ResetPasswordComponent } from "./component/authentication/reset-password/reset-password.component";
+import { PageNotFoundComponent } from "./component/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "dashboard/user", pathMatch: "full" },
@@ -35,6 +36,7 @@ const routes: Routes = [
     path: "greeting",
     component: OrderplaceGreentingComponent,
   },
+  { path: "**", component: PageNotFoundComponent },
 ];
 
 @NgModule({
