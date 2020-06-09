@@ -32,4 +32,5 @@ export const environment = {
   deleteOrder: "remove-order",
   updateQuantity: "",
   confirmOrder: "confirm",
+  allOrders: "orders",
 };
